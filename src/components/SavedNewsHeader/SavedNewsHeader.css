@@ -1,0 +1,30 @@
+.savedArticles-info {
+  padding-right: 104px;
+  padding-left: 104px;
+  font-family: "Roboto";
+  max-width: 712px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 0;
+}
+
+.savedArticles-info__header {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 0.5);
+}
+
+.savedArticles-info__display-amount {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+}
+
+.savedArticles-info__key-words {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+}

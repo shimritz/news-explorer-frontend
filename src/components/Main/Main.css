@@ -1,0 +1,9 @@
+.page__content {
+  font-family: "Roboto";
+  /* width: 1440px; */
+}
+
+p {
+  font-size: 18px;
+  color: black;
+}

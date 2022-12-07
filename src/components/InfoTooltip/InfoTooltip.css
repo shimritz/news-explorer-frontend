@@ -1,0 +1,30 @@
+.info__wrapper {
+  max-width: 430px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.info__heading {
+  width: 315px;
+  height: 56px;
+  font-family: "Roboto";
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 900;
+  margin-left: 36px;
+  margin-right: 79px;
+  margin-top: 43px;
+}
+
+.link_to_signin {
+  /* all: unset; */
+  font-size: 18px;
+  line-height: 22px;
+  color: #2f71e5;
+  width: 228px;
+  background-color: transparent;
+  border: none;
+  margin-bottom: 51px;
+}

@@ -1,0 +1,230 @@
+.article {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 400px;
+  position: relative;
+  z-index: 0;
+  height: 100%;
+}
+
+.article__info {
+  display: flex;
+  flex-direction: column;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+.article__info_date {
+  font-family: "Roboto";
+  font-size: 18px;
+  line-height: 24px;
+  color: #b6bcbf;
+  margin-top: 20px;
+  text-align: left;
+  /* padding-left: ; */
+}
+
+.article__info_title {
+  max-width: 352px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 26px;
+}
+
+.article__info_text {
+  font-family: "Roboto", "Inter";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a1b22;
+  text-align: left;
+}
+
+.article__key-word-label {
+  margin: 0 auto;
+  height: 100%;
+  vertical-align: middle;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  border-radius: 10px;
+  background-color: white;
+  width: 87px;
+  height: 40px;
+  padding-top: 8px;
+  padding-right: 22px;
+  padding-bottom: 8px;
+  padding-left: 8px;
+  text-align: center;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: black;
+}
+
+.article__image {
+  width: 400px;
+  height: 272px;
+  margin: 0;
+  /* cursor: pointer; */
+  position: relative;
+  z-index: 0;
+}
+
+.article__save-btn {
+  background-image: url("../../assets/icons/saveIcon.svg");
+  padding: 11px 10px 13px 13px;
+  z-index: 1;
+  position: absolute;
+  top: -250px;
+  /* right: 60px; */
+  left: 150px;
+  border: 2px solid #b6bcbf;
+  border-radius: 8px;
+  /* cursor: pointer; */
+  position: relative;
+  border-bottom: 1px dotted black;
+}
+
+.article__save-btn:hover {
+  background-image: url(../../assets/icons/Rectangle\ 8.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  padding: 11px 10px 13px 13px;
+  border: 2px solid #b6bcbf;
+  border-radius: 8px;
+  /* cursor: pointer; */
+}
+
+/* .hovertext {
+  position: relative;
+  border-bottom: 1px dotted black;
+} */
+
+.article__save-btn:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 140px;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 1s ease-in-out;
+
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  right: 30px;
+
+  /* top: 110%; */
+}
+
+.article__save-btn:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.article__delete-btn {
+  background-image: url("../../assets/icons/trash.svg");
+  padding: 11px 10px 13px 13px;
+  z-index: 1;
+  position: absolute;
+  top: 35px;
+  right: 37px;
+  border: 2px solid #b6bcbf;
+  border-radius: 8px;
+  /* cursor: pointer; */
+}
+
+.article__delete-btn:hover {
+  background-image: url(../../assets/icons/trash-hover.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  padding: 11px 10px 13px 13px;
+  border: 2px solid #b6bcbf;
+  border-radius: 8px;
+  /* cursor: pointer; */
+}
+
+.article__delete-btn:before {
+  content: attr(second_data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 140px;
+  /* height: 50px; */
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  transition: opacity 1s ease-in-out;
+
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  right: 30px;
+}
+
+.article__delete-btn:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.article__save-btn_type_selected {
+  background-image: url("../../assets/icons/saveIconselected.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 11px 10px 13px 13px;
+  z-index: 1;
+  /* position: absolute; */
+  top: -250px;
+  /* right: 60px; */
+  left: 150px;
+  border: 2px solid #b6bcbf;
+  border-radius: 8px;
+  /* cursor: pointer; */
+  position: relative;
+  border-bottom: 1px dotted black;
+}
+
+.article__footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 15px 25px 21px;
+  padding: 0;
+}
+
+.article__footer_source-name {
+  max-width: calc(246px - 21px);
+  color: #b6bcbf;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .article {
+    width: 224px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .article {
+    margin: 0 19px;
+  }
+  .article__footer {
+    margin-top: 25px;
+    margin-bottom: 31px;
+  }
+}
