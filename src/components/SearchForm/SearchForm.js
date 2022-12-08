@@ -1,15 +1,15 @@
 function SearchForm() {
   return (
     <form className="search-form">
-      <h1 className="search-form__title_title">Whats going on in the world</h1>
-      <h2 className="search-form__title_subtitle">
+      <h1 className="search-form__title">Whats going on in the world</h1>
+      <h2 className="search-form__subtitle">
         Find the latest news on any topic and save them in your personal
         account.
       </h2>
       <div className="search-form__field-wrapper">
         <input
           className="search-form__field"
-          placeholder="Enter a search value"
+          placeholder="Enter a Topic"
         ></input>
         <button type="submit" className="search-form__button">
           Search

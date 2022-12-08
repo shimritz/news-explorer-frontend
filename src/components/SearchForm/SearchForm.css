@@ -6,39 +6,55 @@
   justify-content: space-around;
   border: none;
   max-width: 608px;
-  /* background-image: url("../../assets/images/bg_search_img.jpg");
-  background-repeat: no-repeat; */
+  padding-top: 88px;
+  padding-bottom: 88px;
 }
 
 .search-form__title {
+  font-family: "Roboto-slab";
   font-size: 60px;
   line-height: 64px;
   font-weight: 400;
 }
 
-.search-form__title_subtitle {
+.search-form__subtitle {
+  font-family: "Roboto";
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
 }
 
-/* .search-form__field-wrapper {
-  height: 64px;
-} */
+.search-form__field-wrapper {
+  /* width: 100%;
+  /* margin-top: 88px; */
+
+  width: 100%;
+  background-color: white;
+  justify-content: space-around;
+  margin: 0;
+  flex-direction: row;
+  border-radius: 50px;
+  border: none;
+  position: relative;
+}
 
 .search-form__button {
-  width: 168px;
   background-color: #2f71e5;
-  border-radius: 100px;
-  padding: 20px, 56px, 20px, 56px;
-  position: absolute;
-
-  top: 0px;
-  right: 30px;
-  border: 0px;
-  width: 30%;
-  height: 100%;
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
   color: white;
+  padding: 20px 50px;
+  border-radius: 50px;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  transition: all 0.4s;
 }
 
 .search-form__button:hover {
@@ -48,17 +64,19 @@
 .search-form__button:active {
   background-color: #2a65cc;
 }
-.search-form__field-wrapper {
-  width: 100%;
-  position: relative;
-  margin-bottom: 26px;
-}
+
 .search-form__field {
+  /* width: 100%; */
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: left;
+  padding: 20px 20px 20px 40px;
+  border-radius: 50px;
   border: none;
-  width: 80%;
-  max-height: 66px;
-  padding: 0px;
-  padding: 19px 5px 19px 26px;
-  border-radius: 100px;
-  position: relative;
+  /* flex-grow: 2; */
+  color: #1a1b22;
+  /* margin: auto; */
 }

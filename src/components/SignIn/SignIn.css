@@ -1,5 +1,5 @@
 .sign-in {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -23,16 +23,15 @@
   justify-content: center;
   align-items: center;
 }
-/* 
+
 .signin__welcome {
   font-family: "Roboto";
   color: black;
-  font-size: 24px;
+  /* font-size: 24px;
   font-weight: 900;
-  margin: 22px auto;
-} */
-
-label {
+  margin: 22px auto; */
+}
+*/ label {
   font-size: 12px;
   line-height: 14.52px;
   font-family: "Inter";

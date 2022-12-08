@@ -1,7 +1,10 @@
 .App {
-  text-align: center;
+  /* display: flex;
+  flex-direction: column; */
+  /* text-align: center; */
   padding: 0;
-  max-width: 1440px;
+  /* max-width: 1440px; */
+  width: 100%;
   margin: 0 auto;
   cursor: url("../../assets/images/cursorImage.png"), auto;
 }
