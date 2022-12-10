@@ -58,7 +58,11 @@ function App() {
           onClose={handleClosePopup}
           handleSubmit={handleSubmit}
         />
-        <InfoTooltip isPopupOpen={isInfoOpen} onClose={handleClosePopup} />
+        <InfoTooltip
+          isPopupOpen={isInfoOpen}
+          onClose={handleClosePopup}
+          handleSignInButtonClick={handleSignInButtonClick}
+        />
 
         <div style={{ height: "100%" }}>
           <Header handleSignInButtonClick={handleSignInButtonClick} />

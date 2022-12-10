@@ -1,10 +1,14 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-function InfoTooltip({ isPopupOpen, onClose }) {
+function InfoTooltip({ isPopupOpen, onClose, handleSignInClick }) {
   return (
     <PopupWithForm name="info" isPopupOpen={isPopupOpen} onClose={onClose}>
       <div className="info__wrapper">
         <h2 className="info__heading">Registration successfully completed!</h2>
-        <button type="button" className="link_to_signin">
+        <button
+          type="button"
+          className="link_to_signin"
+          onClick={handleSignInClick}
+        >
           Sign in
         </button>
       </div>

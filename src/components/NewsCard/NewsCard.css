@@ -26,6 +26,7 @@
 }
 
 .article__info_title {
+  font-family: "Roboto-slab";
   max-width: 352px;
   font-family: "Roboto";
   font-weight: 400;
@@ -195,12 +196,13 @@
 
 .article__footer {
   display: flex;
-  justify-content: space-between;
-  margin: 24px 15px 25px 21px;
-  padding: 0;
+  text-align: left;
+
+  padding-bottom: 24px;
 }
 
 .article__footer_source-name {
+  font-family: "Roboto-slab";
   max-width: calc(246px - 21px);
   color: #b6bcbf;
   font-weight: 700;

@@ -3,7 +3,8 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  align-items: center;
+  align-items: flex-start;
+  padding-left: 36px;
 }
 
 .info__heading {
@@ -13,7 +14,7 @@
   font-size: 24px;
   line-height: 28px;
   font-weight: 900;
-  margin-left: 36px;
+  /* margin-left: 36px; */
   margin-right: 79px;
   margin-top: 43px;
 }
@@ -27,4 +28,5 @@
   background-color: transparent;
   border: none;
   margin-bottom: 51px;
+  text-align: left;
 }
