@@ -11,27 +11,46 @@ function Footer() {
         </p>
         <div className="footer__link-wrapper">
           <ul className="footer__nav">
-            <li className="footer__nav-link">Home</li>
-            <li className="footer__nav-link">Practicum</li>
+            <Link to="/" className="footer__nav-link">
+              Home
+            </Link>
+            <a
+              href="https://practicum.com"
+              className="footer__nav-link"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Practicum
+            </a>
           </ul>
           <ul className="footer__social-links">
             <li>
-              <Link to="#" className="footer__social-link">
+              <a
+                href="https://github.com/shimritz/news-explorer-frontend"
+                className="footer__social-link"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img
                   src={github}
                   alt="github icon"
                   className="footer__social-icon"
                 />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="#" className="footer__social-link">
+              <a
+                href="https://facebook.com"
+                className="footer__social-link"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <img
                   src={facebook}
                   alt="facebook icon"
                   className="footer__social-icon"
                 />
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

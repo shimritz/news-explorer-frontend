@@ -33,6 +33,8 @@
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
+  text-decoration: none;
+  color: black;
 }
 
 .footer__copyrights {
@@ -56,17 +58,6 @@
 }
 
 @media (max-width: 930px) {
-  .footer__container,
-  .footer__nav {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 30px;
-  }
-
-  .footer__social-links {
-    justify-content: center;
-  }
 }
 
 @media (max-width: 320px) {
