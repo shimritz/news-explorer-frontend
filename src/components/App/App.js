@@ -51,12 +51,14 @@ function App() {
           handleSignUpButtonClick={handleSignUpButtonClick}
           onClose={handleClosePopup}
           handleSubmit={handleSubmit}
+          onRedirect={handleSignUpButtonClick}
         />
         <SignUp
           isPopupOpen={isSignUpOpen}
           handleSignInButtonClick={handleSignInButtonClick}
           onClose={handleClosePopup}
           handleSubmit={handleSubmit}
+          onRedirect={handleSignInButtonClick}
         />
         <InfoTooltip
           isPopupOpen={isInfoOpen}

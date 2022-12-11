@@ -13,7 +13,7 @@
 @import url("./components/SavedNewsHeader/SavedNewsHeader.css");
 @import url("./components/NothingFound/NothingFound.css");
 @import url("./components/Preloader/preloader.css");
-@import url("./components/Popup/Popup.css");
+/* @import url("./components/Popup/Popup.css"); */
 @import url("./components/PopupWithForm/PopupWithForm.css");
 @import url("./components/SignIn/SignIn.css");
 @import url("./components/SignUp/SignUp.css");
