@@ -12,6 +12,12 @@ function PopupWithForm({
   // handleSignUpButtonClick,
   onRedirect,
 }) {
+  const handleEscClose = (e) => {
+    if (e.key === "Escape") {
+      onClose();
+    }
+  };
+  document.addEventListener("keydown", handleEscClose);
   return (
     <div
       className={`popup popup_type_${name} ${isPopupOpen ? "popup_open" : ""}`}
