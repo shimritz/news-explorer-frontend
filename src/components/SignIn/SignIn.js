@@ -15,17 +15,18 @@ function SignIn({
   const { setIsLoggedIn, isLoggedIn } = useLoggedIn();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     navigate("/saved-news");
-  //   }
-  // }, [isLoggedIn]);
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/saved-news");
+    }
+  }, [isLoggedIn, navigate]);
 
   function handleSubmit(e) {
     // api authentication call here
 
     handlePopupSubmit(e);
     setIsLoggedIn(true);
+    navigate("/saved-news");
   }
 
   return (
