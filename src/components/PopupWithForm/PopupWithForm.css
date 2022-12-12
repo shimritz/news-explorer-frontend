@@ -87,8 +87,8 @@
 
 .popup__close-btn {
   position: absolute;
-  top: 50px;
-  right: 400px;
+  top: 140px;
+  right: 310px;
   background-color: transparent;
   background-image: url("../../assets/icons/CloseIcon\(1\).svg");
   background-repeat: no-repeat;

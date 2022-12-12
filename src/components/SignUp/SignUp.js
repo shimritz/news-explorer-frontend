@@ -4,7 +4,7 @@ function SignUp({
   isPopupOpen,
   // handleSignInButtonClick,
   onClose,
-  handleSubmit,
+  handlePopupSubmit,
   onRedirect,
 }) {
   return (
@@ -16,7 +16,7 @@ function SignUp({
       redirect="signin"
       isPopupOpen={isPopupOpen}
       onClose={onClose}
-      onSubmit={handleSubmit}
+      onSubmit={handlePopupSubmit}
       onRedirect={onRedirect}
     >
       <fieldset className="form__fieldset">

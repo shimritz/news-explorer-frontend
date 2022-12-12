@@ -36,7 +36,7 @@ function App() {
     setIsInfoOpen(false);
   };
 
-  function handleSubmit(e) {
+  function handleSubmitPopup(e) {
     e.preventDefault();
     setIsSignInOpen(false);
     setIsSignUpOpen(false);
@@ -50,14 +50,14 @@ function App() {
           isPopupOpen={isSignInOpen}
           handleSignUpButtonClick={handleSignUpButtonClick}
           onClose={handleClosePopup}
-          handleSubmit={handleSubmit}
+          handlePopupSubmit={handleSubmitPopup}
           onRedirect={handleSignUpButtonClick}
         />
         <SignUp
           isPopupOpen={isSignUpOpen}
           handleSignInButtonClick={handleSignInButtonClick}
           onClose={handleClosePopup}
-          handleSubmit={handleSubmit}
+          handlePopupSubmit={handleSubmitPopup}
           onRedirect={handleSignInButtonClick}
         />
         <InfoTooltip

@@ -48,8 +48,8 @@ function Navigation({
             Home
           </Link>
         </li>
-        <li className="link">
-          {isLoggedIn && (
+        {isLoggedIn && (
+          <li className="link">
             <Link
               className={[
                 isBackgroundWhite ? "nav__link_black" : "nav__link",
@@ -59,8 +59,8 @@ function Navigation({
             >
               Saved articles
             </Link>
-          )}
-        </li>
+          </li>
+        )}
         <button
           type="button"
           className="nav__signin-btn"

@@ -1,13 +1,31 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import { Link } from "react-router-dom";
-// import { useLoggedIn } from "../../context/LoggedInContext";
+import { useLoggedIn } from "../../context/LoggedInContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 // function SignIn(isPopupOpen) {
-function SignIn({ isPopupOpen, handleSignUpButtonClick, onClose, onRedirect }) {
-  // const { isLoggedIn, handleLogOut } = useLoggedIn();
+function SignIn({
+  isPopupOpen,
+  handleSignUpButtonClick,
+  onClose,
+  onRedirect,
+  handlePopupSubmit,
+}) {
+  const { setIsLoggedIn, isLoggedIn } = useLoggedIn();
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate("/saved-news");
+  //   }
+  // }, [isLoggedIn]);
+
   function handleSubmit(e) {
-    e.preventDefault();
-    // isLoggedIn(true);
+    // api authentication call here
+
+    handlePopupSubmit(e);
+    setIsLoggedIn(true);
   }
 
   return (
