@@ -19,8 +19,6 @@ function SignUp({
       onSubmit={handleSubmit}
       onRedirect={onRedirect}
     >
-      {/* <form onSubmit={handleSubmit} className="form signup__form">
-          <div className="signup"> */}
       <fieldset className="form__fieldset">
         <h3 className="form__input-title">Email</h3>
         <input

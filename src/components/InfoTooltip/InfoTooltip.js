@@ -6,7 +6,7 @@ function InfoTooltip({ isPopupOpen, onClose, handleSignInClick }) {
         <h2 className="info__heading">Registration successfully completed!</h2>
         <button
           type="button"
-          className="link_to_signin"
+          className="info__link"
           onClick={handleSignInClick}
         >
           Sign in

@@ -25,6 +25,11 @@
   margin-top: 8px;
 }
 
+.form__input:focus {
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
 .form__input:active {
   border: none;
 }

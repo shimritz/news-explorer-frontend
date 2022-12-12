@@ -6,6 +6,8 @@ import exitIcon from "../../assets/icons/exitIcon.svg";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
 import { useLocation } from "react-router-dom";
 
+import { useLoggedIn } from "../../context/LoggedInContext";
+
 function Navigation({
   isBackgroundWhite,
   handleSignInClick,
@@ -13,6 +15,7 @@ function Navigation({
 }) {
   const location = useLocation();
   const [isHomeTabOpen, setIsHomeTabOpen] = useState(false);
+  const { isLoggedIn, handleLogOut } = useLoggedIn();
 
   useEffect(() => {
     location.pathname === "/"
@@ -46,24 +49,26 @@ function Navigation({
           </Link>
         </li>
         <li className="link">
-          <Link
-            className={[
-              isBackgroundWhite ? "nav__link_black" : "nav__link",
-              !isHomeTabOpen && "nav__link_selected",
-            ].join(" ")}
-            to="/saved-news"
-          >
-            Saved articles
-          </Link>
+          {isLoggedIn && (
+            <Link
+              className={[
+                isBackgroundWhite ? "nav__link_black" : "nav__link",
+                !isHomeTabOpen && "nav__link_selected",
+              ].join(" ")}
+              to="/saved-news"
+            >
+              Saved articles
+            </Link>
+          )}
         </li>
         <button
           type="button"
           className="nav__signin-btn"
           onClick={handleSignInClick}
         >
-          {isBackgroundWhite ? (
-            <div className="signout_btn">
-              Elise <img src={exitIcon} />
+          {isLoggedIn ? (
+            <div className="signout_btn" onClick={handleLogOut}>
+              Elise <img src={exitIcon} alt="exit icon" />
             </div>
           ) : (
             "Sign in"

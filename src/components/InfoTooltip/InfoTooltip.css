@@ -19,8 +19,7 @@
   margin-top: 43px;
 }
 
-.link_to_signin {
-  /* all: unset; */
+.info__link {
   font-size: 18px;
   line-height: 22px;
   color: #2f71e5;

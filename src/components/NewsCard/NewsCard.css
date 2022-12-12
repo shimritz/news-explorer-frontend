@@ -15,12 +15,10 @@
   padding-right: 24px;
   padding-left: 24px;
   margin-top: 0;
-  /* margin: 0; */
-  /* height: 100%; */
 }
 
 .article__info_date {
-  font-family: "Roboto";
+  font-family: "Roboto-slab" Arial, sans-serif;
   font-size: 18px;
   line-height: 24px;
   color: #b6bcbf;
@@ -31,7 +29,7 @@
 }
 
 .article__info_title {
-  font-family: "Roboto-slab";
+  font-family: "Roboto-slab" Arial, sans-serif;
   max-width: 352px;
   font-family: "Roboto";
   font-weight: 400;
@@ -41,7 +39,7 @@
 }
 
 .article__info_text {
-  font-family: "Roboto", "Inter";
+  font-family: "Roboto", Arial, sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -196,13 +194,12 @@
   background-position: center;
   padding: 11px 10px 13px 13px;
   z-index: 1;
-  /* position: absolute; */
   top: -250px;
-  /* right: 60px; */
+
   left: 150px;
   border: 2px solid #b6bcbf;
   border-radius: 8px;
-  /* cursor: pointer; */
+
   position: relative;
   border-bottom: 1px dotted black;
 }
@@ -215,7 +212,7 @@
 }
 
 .article__footer_source-name {
-  font-family: "Roboto-slab";
+  font-family: "Roboto-slab", Arial, sans-serif;
   max-width: calc(246px - 21px);
   color: #b6bcbf;
   font-weight: 700;

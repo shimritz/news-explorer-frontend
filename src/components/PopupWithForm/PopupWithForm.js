@@ -8,8 +8,7 @@ function PopupWithForm({
   submit,
   buttonText,
   redirect,
-  // handleSignInButtonClick,
-  // handleSignUpButtonClick,
+
   onRedirect,
 }) {
   const handleEscClose = (e) => {

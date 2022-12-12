@@ -1,22 +1,22 @@
 import { useContext, useState, createContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const LoggedInContext = createContext();
 
 const LoggedInContextProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({
     email: "shimrit@gmail.com",
     firstName: "Shimrit",
     lastName: "Breef Ziskand",
   });
 
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     setIsLoggedIn(false);
     setUser({});
-    history.push("/");
+    navigate("/");
   };
 
   return (

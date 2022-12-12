@@ -1,10 +1,13 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import { Link } from "react-router-dom";
+// import { useLoggedIn } from "../../context/LoggedInContext";
 
 // function SignIn(isPopupOpen) {
 function SignIn({ isPopupOpen, handleSignUpButtonClick, onClose, onRedirect }) {
+  // const { isLoggedIn, handleLogOut } = useLoggedIn();
   function handleSubmit(e) {
     e.preventDefault();
+    // isLoggedIn(true);
   }
 
   return (
@@ -19,8 +22,6 @@ function SignIn({ isPopupOpen, handleSignUpButtonClick, onClose, onRedirect }) {
       onSubmit={handleSubmit}
       onRedirect={onRedirect}
     >
-      {/* <form onSubmit={handleSubmit} className="form signup__form">
-          <div className="signup"> */}
       <fieldset className="form__fieldset">
         <h3 className="form__input-title">Email</h3>
         <input
