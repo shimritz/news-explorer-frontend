@@ -27,7 +27,7 @@ function Header({ handleSignInButtonClick }) {
   };
 
   return (
-    <header className={isBackgroundWhite ? "header2" : "header"}>
+    <header className={isBackgroundWhite ? "headerLoggedIn" : "header"}>
       <Navigation
         isBackgroundWhite={isBackgroundWhite}
         handleSignInClick={handleSignInButtonClick}
