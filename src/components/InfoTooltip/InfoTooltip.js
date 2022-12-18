@@ -1,5 +1,5 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-function InfoTooltip({ isPopupOpen, onClose, handleSignInClick }) {
+function InfoTooltip({ isPopupOpen, onClose, handleSignInButtonClick }) {
   return (
     <PopupWithForm name="info" isPopupOpen={isPopupOpen} onClose={onClose}>
       <div className="info__wrapper">
@@ -7,7 +7,7 @@ function InfoTooltip({ isPopupOpen, onClose, handleSignInClick }) {
         <button
           type="button"
           className="info__link"
-          onClick={handleSignInClick}
+          onClick={handleSignInButtonClick}
         >
           Sign in
         </button>

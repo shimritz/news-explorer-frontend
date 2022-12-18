@@ -5,7 +5,6 @@ import logo_black from "../../assets/icons/BlackLogo.svg";
 import exitIcon from "../../assets/icons/exitIcon.svg";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
 import { useLocation } from "react-router-dom";
-
 import { useLoggedIn } from "../../context/LoggedInContext";
 
 function Navigation({
@@ -21,7 +20,7 @@ function Navigation({
     location.pathname === "/"
       ? setIsHomeTabOpen(true)
       : setIsHomeTabOpen(false);
-  }, [location]);
+  }, [location.pathname]);
 
   return (
     <nav className="nav">

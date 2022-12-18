@@ -29,3 +29,24 @@
   margin-bottom: 51px;
   text-align: left;
 }
+
+.info__link {
+  border-radius: 2px;
+  background-color: #e6e8eb;
+  color: #2f71e5;
+  padding: 0;
+  width: 80%;
+  margin-bottom: 51px;
+  line-height: 50px;
+  border: none;
+  border-radius: 100px;
+}
+
+.info__link:hover {
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.popup__redirect {
+  display: none;
+}

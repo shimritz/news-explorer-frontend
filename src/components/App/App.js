@@ -71,9 +71,9 @@ function App() {
         </div>
 
         <Routes>
+          <Route path="/" element={<Main />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/" element={<Main />} />
           <Route
             path="/saved-news"
             element={

@@ -8,6 +8,7 @@ import Preloader from "../Preloader/Preloader";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 
 function Main() {
+  console.log("main main main");
   return (
     <main className="page__content">
       {/* //TODO: after search Click  */}

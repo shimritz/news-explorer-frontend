@@ -72,6 +72,7 @@
   background-color: transparent;
   border: 0.5px solid white;
   padding: 12px;
+  margin-bottom: 8px;
 }
 
 /* .nav__signin-btn:hover {

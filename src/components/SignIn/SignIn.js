@@ -19,7 +19,7 @@ function SignIn({
     if (isLoggedIn) {
       navigate("/saved-news");
     }
-  }, [isLoggedIn, navigate]);
+  }, [isLoggedIn]);
 
   function handleSubmit(e) {
     // api authentication call here
