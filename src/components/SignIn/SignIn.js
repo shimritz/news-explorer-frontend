@@ -53,6 +53,7 @@ function SignIn({
         <span className="form__input-error"></span>
         <h3 className="form__input-title">Password</h3>
         <input
+          type="password"
           name="password"
           className="form__input"
           placeholder="Enter Password"

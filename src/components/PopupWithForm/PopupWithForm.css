@@ -9,6 +9,7 @@
   align-self: center;
   /* position: relative; */
   font-family: "Roboto";
+  padding-bottom: 64px;
 }
 
 .popup {
@@ -86,9 +87,9 @@
 }
 
 .popup__close-btn {
-  position: absolute;
-  top: 140px;
-  right: 310px;
+  position: fixed;
+  top: 55px;
+  right: 285px;
   background-color: transparent;
   background-image: url("../../assets/icons/CloseIcon\(1\).svg");
   background-repeat: no-repeat;
