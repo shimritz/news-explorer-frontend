@@ -1,4 +1,5 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { useState } from "react";
 
 function SignUp({
   isPopupOpen,
@@ -7,8 +8,14 @@ function SignUp({
   handlePopupSubmit,
   onRedirect,
 }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+
+  const validate = () => {
+    return email.length > 0 && password.length > 0 && username.length > 0;
+  };
   return (
-    // <div className="sign-up">
     <PopupWithForm
       title="sign up"
       name="sign up"
@@ -18,6 +25,7 @@ function SignUp({
       onClose={onClose}
       onSubmit={handlePopupSubmit}
       onRedirect={onRedirect}
+      validate={validate}
     >
       <fieldset className="form__fieldset">
         <h3 className="form__input-title">Email</h3>
@@ -26,14 +34,19 @@ function SignUp({
           name="email"
           className="form__input"
           placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <span className="form__input-error"></span>
         <h3 className="form__input-title">Password</h3>
         <input
+          type="password"
           name="password"
           className="form__input"
           placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <span className="form__input-error"></span>
@@ -42,6 +55,8 @@ function SignUp({
           name="username"
           className="form__input"
           placeholder="Enter Your Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
         />
         <span className="form__input-error"></span>

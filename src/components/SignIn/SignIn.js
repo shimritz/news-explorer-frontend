@@ -19,7 +19,7 @@ function SignIn({
   const [password, setPassword] = useState("");
 
   const validate = () => {
-    return (email.length > 0) & (password.length > 0);
+    return email.length > 0 && password.length > 0;
   };
 
   useEffect(() => {
