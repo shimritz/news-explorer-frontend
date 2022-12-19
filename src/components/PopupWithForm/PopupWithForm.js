@@ -8,7 +8,6 @@ function PopupWithForm({
   submit,
   buttonText,
   redirect,
-
   onRedirect,
 }) {
   const handleEscClose = (e) => {
@@ -34,7 +33,14 @@ function PopupWithForm({
           <button className="popup__button" type="submit" onClick={submit}>
             {buttonText}
           </button>
-          <p className="popup__redirect">
+
+          <p
+            className={
+              name && name === "info"
+                ? "popup__redirect_hidden"
+                : "popup__redirect"
+            }
+          >
             or{" "}
             <button
               className="popup__redirect-button"

@@ -78,9 +78,18 @@
 }
 
 .popup__redirect {
-  align-self: center;
-  background-color: chartreuse;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 17px;
 }
+
+.popup__redirect_hidden {
+  display: none;
+}
+
 .popup__redirect-button {
   background-color: transparent;
   border: none;

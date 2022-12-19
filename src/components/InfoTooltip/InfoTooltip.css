@@ -45,7 +45,3 @@
 .info__link:hover {
   cursor: pointer;
 }
-
-.popup__redirect {
-  display: none;
-}
