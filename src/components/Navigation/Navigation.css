@@ -112,7 +112,7 @@
   white-space: nowrap;
 }
 
-@media (max-width: 330px) {
+@media (max-width: 446px) {
   .nav__logo {
     width: 117px;
     height: 24px;

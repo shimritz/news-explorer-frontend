@@ -16,7 +16,6 @@ function App() {
   const [isSignInOpen, setIsSignInOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
-  const [loggedIn, setIsLoggedIn] = useState(null);
 
   const handleSignInButtonClick = (e) => {
     e.preventDefault();

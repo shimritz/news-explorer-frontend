@@ -2,7 +2,7 @@ import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import { Link } from "react-router-dom";
 import { useLoggedIn } from "../../context/LoggedInContext";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // function SignIn(isPopupOpen) {
 function SignIn({
@@ -14,6 +14,13 @@ function SignIn({
 }) {
   const { setIsLoggedIn, isLoggedIn } = useLoggedIn();
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const validate = () => {
+    return (email.length > 0) & (password.length > 0);
+  };
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -40,6 +47,7 @@ function SignIn({
       onClose={onClose}
       onSubmit={handleSubmit}
       onRedirect={onRedirect}
+      validate={validate}
     >
       <fieldset className="form__fieldset">
         <h3 className="form__input-title">Email</h3>
@@ -48,6 +56,8 @@ function SignIn({
           name="email"
           className="form__input"
           placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
         />
         <span className="form__input-error"></span>
@@ -57,6 +67,8 @@ function SignIn({
           name="password"
           className="form__input"
           placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
         />
         <span className="form__input-error"></span>

@@ -12,6 +12,7 @@
   font-size: 18px;
   line-height: 24px;
   align-self: center;
+  justify-content: flex-start;
   max-width: 600px;
 }
 
@@ -50,9 +51,6 @@
     line-height: 40px;
   }
 
-  .about__info-content {
-    margin: 16px 0 0 32px;
-  }
   .about__info {
     max-width: 424px;
     max-height: 424px;

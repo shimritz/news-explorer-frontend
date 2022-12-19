@@ -9,6 +9,7 @@ function PopupWithForm({
   buttonText,
   redirect,
   onRedirect,
+  validate = null,
 }) {
   const handleEscClose = (e) => {
     if (e.key === "Escape") {
@@ -30,7 +31,14 @@ function PopupWithForm({
         <form action="submit" className="form" name={name} onSubmit={onSubmit}>
           <h1 className="form__title">{title}</h1>
           {children}
-          <button className="popup__button" type="submit" onClick={submit}>
+          <button
+            className={`popup__button ${
+              validate && !validate() ? "popup__button_disabled" : ""
+            }`}
+            type="submit"
+            onClick={submit}
+            disabled={validate ? !validate() : false}
+          >
             {buttonText}
           </button>
 

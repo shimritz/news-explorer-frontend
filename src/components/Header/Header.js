@@ -12,6 +12,11 @@ function Header({ handleSignInButtonClick }) {
   const [isBackgroundWhite, setIsBackgroundWhite] = useState(false);
   const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false);
 
+  const handleSignIn = (e) => {
+    handleSignInButtonClick(e);
+    setIsSideDrawerOpen(false);
+  };
+
   useEffect(() => {
     location.pathname === "/saved-news"
       ? setIsBackgroundWhite(true)
@@ -34,10 +39,7 @@ function Header({ handleSignInButtonClick }) {
         drawerClickHandler={drawerToggleClickHandler}
       />
       {/* {isSideDrawerOpen ? <SideDrawer /> && <Backdrop /> : ""} */}
-      <SideDrawer
-        show={isSideDrawerOpen}
-        handleSignInClick={handleSignInButtonClick}
-      />
+      <SideDrawer show={isSideDrawerOpen} handleSignInClick={handleSignIn} />
       {isSideDrawerOpen ? (
         <div>
           {/* <SideDrawer show={isSideDrawerOpen} /> */}
