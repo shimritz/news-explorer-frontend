@@ -1,6 +1,7 @@
 .form {
   width: 430px;
-  height: 380px;
+  /* height: 380px; */
+  height: 100%;
   background: #ffffff;
   color: #000000;
   display: flex;
@@ -104,10 +105,8 @@
 
 .popup__close-btn {
   position: fixed;
-  top: 300px;
-  right: 240px;
-  /* right: 590px;
-  top: 270px; */
+  top: 250px;
+  right: 200px;
   background-color: transparent;
   background-image: url("../../assets/icons/CloseIcon\(1\).svg");
   background-repeat: no-repeat;
