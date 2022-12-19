@@ -1,5 +1,6 @@
 .form {
-  width: 358px;
+  width: 430px;
+  height: 380px;
   background: #ffffff;
   color: #000000;
   display: flex;
@@ -7,7 +8,7 @@
   justify-content: center;
   border-radius: 10px;
   align-self: center;
-  /* position: relative; */
+  position: relative;
   font-family: "Roboto";
   padding-bottom: 64px;
 }
@@ -78,6 +79,7 @@
 
 .popup__redirect {
   align-self: center;
+  background-color: chartreuse;
 }
 .popup__redirect-button {
   background-color: transparent;
@@ -88,8 +90,10 @@
 
 .popup__close-btn {
   position: fixed;
-  top: 55px;
-  right: 285px;
+  top: 300px;
+  right: 240px;
+  /* right: 590px;
+  top: 270px; */
   background-color: transparent;
   background-image: url("../../assets/icons/CloseIcon\(1\).svg");
   background-repeat: no-repeat;
@@ -102,8 +106,6 @@
 @media screen and (max-width: 800px) {
   .popup__close-button {
     background-size: 20px 20px;
-    top: 30px;
-    right: 44px;
   }
 }
 @media screen and (max-width: 320px) {
