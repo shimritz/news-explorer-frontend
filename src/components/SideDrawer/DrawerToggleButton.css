@@ -20,8 +20,13 @@
   height: 2px;
   background: white;
 }
+.toggle-button__line_black {
+  width: 30px;
+  height: 2px;
+  background: black;
+}
 
-@media (max-width: 450px) {
+@media (max-width: 520px) {
   .toggle-button {
     display: flex;
   }

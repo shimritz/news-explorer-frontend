@@ -111,7 +111,16 @@
   white-space: nowrap;
 }
 
-@media (max-width: 446px) {
+@media (max-width: 800px) {
+  .nav__logo {
+    margin-left: 40px;
+  }
+  .nav__links {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 520px) {
   .nav__logo {
     width: 117px;
     height: 24px;

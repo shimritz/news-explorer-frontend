@@ -44,13 +44,27 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1230px) {
+@media screen and (max-width: 768px) {
+  .news-card {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
   .news-card__list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    gap: 20px;
+    /* max-width: 550px; */
+  }
+  .news-card__list {
+    margin-top: 32px;
+    gap: 8px;
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 550px) {
+  .news-card {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
   .news-card__list {
     grid-template-columns: 1fr;
     gap: 20px;

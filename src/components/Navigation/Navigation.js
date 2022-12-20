@@ -84,7 +84,10 @@ function Navigation({
         )}
       </ul>
       <div>
-        <DrawerToggleButton handleClick={drawerClickHandler} />
+        <DrawerToggleButton
+          handleClick={drawerClickHandler}
+          isBackgroundWhite={isBackgroundWhite}
+        />
       </div>
     </nav>
   );

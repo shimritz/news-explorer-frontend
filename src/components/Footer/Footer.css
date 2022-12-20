@@ -57,10 +57,18 @@
   height: 20px;
 }
 
-@media (max-width: 930px) {
+@media (max-width: 950px) {
+  .footer {
+    padding-left: 40px;
+    padding-right: 25px;
+  }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 590px) {
+  .footer__nav {
+    margin-bottom: 38px;
+    flex-direction: column;
+  }
   .footer__container {
     flex-direction: column-reverse;
   }

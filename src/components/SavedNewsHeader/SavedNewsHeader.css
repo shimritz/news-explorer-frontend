@@ -28,3 +28,15 @@
   font-size: 18px;
   line-height: 24px;
 }
+
+@media (max-width: 340px) {
+  .savedArticles-info {
+    width: 288px;
+  }
+  .savedArticles-info__display-amount {
+    width: 100%;
+  }
+  .savedArticles-info__key-words {
+    width: 100%;
+  }
+}
