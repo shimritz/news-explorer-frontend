@@ -1,18 +1,10 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import { Link } from "react-router-dom";
 import { useLoggedIn } from "../../context/LoggedInContext";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-// function SignIn(isPopupOpen) {
-function SignIn({
-  isPopupOpen,
-  handleSignUpButtonClick,
-  onClose,
-  onRedirect,
-  handlePopupSubmit,
-}) {
-  const { setIsLoggedIn, isLoggedIn } = useLoggedIn();
+function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
+  const { setIsLoggedIn } = useLoggedIn();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -21,12 +13,6 @@ function SignIn({
   const validate = () => {
     return email.length > 0 && password.length > 0;
   };
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/saved-news");
-    }
-  }, [isLoggedIn]);
 
   function handleSubmit(e) {
     // api authentication call here

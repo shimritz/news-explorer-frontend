@@ -18,12 +18,11 @@
 
 .nav__links {
   text-decoration: none;
-  /* color: #ffffff; */
   display: flex;
   align-self: flex-end;
 
   margin-right: 104px;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   gap: 40px;
   flex-grow: 1;

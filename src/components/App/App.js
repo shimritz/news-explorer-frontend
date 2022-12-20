@@ -47,7 +47,6 @@ function App() {
       <div className="App">
         <SignIn
           isPopupOpen={isSignInOpen}
-          handleSignUpButtonClick={handleSignUpButtonClick}
           onClose={handleClosePopup}
           handlePopupSubmit={handleSubmitPopup}
           onRedirect={handleSignUpButtonClick}
