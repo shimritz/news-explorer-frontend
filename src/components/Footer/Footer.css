@@ -1,15 +1,14 @@
 .footer {
   background-color: white;
-  padding: 44px 0 47px;
+  padding: 32px 106px 26px 104px;
 }
 
 .footer__container {
-  max-width: 1184px;
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
-  margin: 0 auto;
+  margin: 0;
   flex-wrap: nowrap;
 }
 
@@ -57,14 +56,16 @@
   height: 20px;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 768px) {
   .footer {
-    padding-left: 40px;
-    padding-right: 25px;
+    padding: 21px 41px 19px 40px;
   }
 }
 
-@media (max-width: 590px) {
+@media (max-width: 320px) {
+  .footer {
+    padding: 20px 18px 22px 16px;
+  }
   .footer__nav {
     margin-bottom: 38px;
     flex-direction: column;

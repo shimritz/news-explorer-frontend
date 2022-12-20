@@ -15,7 +15,6 @@ function NewsCardList() {
   }, [location]);
 
   return (
-    // <>
     <div className="news-card">
       <h1 className="news-card__header">Search results</h1>
       <section className="news-card__list">

@@ -6,8 +6,8 @@
   justify-content: space-around;
   border: none;
   max-width: 608px;
-  padding-top: 88px;
-  padding-bottom: 88px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .search-form__title {
@@ -15,6 +15,7 @@
   font-size: 60px;
   line-height: 64px;
   font-weight: 400;
+  margin: 0;
 }
 
 .search-form__subtitle {
@@ -76,14 +77,12 @@
   padding: 20px 20px 20px 40px;
   border-radius: 50px;
   border: none;
-  /* flex-grow: 2; */
   color: #1a1b22;
   /* margin: auto; */
 }
 
 @media (max-width: 768px) {
   .search-form {
-    /* max-width: 448px; */
     padding-top: 38px;
     padding-bottom: 48px;
   }
@@ -98,7 +97,7 @@
   }
 }
 
-@media (max-width: 340px) {
+@media (max-width: 320px) {
   .search-form {
     max-width: 288px;
     margin: auto;
@@ -116,5 +115,8 @@
     max-width: 288px;
     flex-direction: column;
     gap: 16px;
+  }
+  .search-form__field {
+    width: 80%;
   }
 }

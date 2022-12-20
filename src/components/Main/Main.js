@@ -9,8 +9,6 @@ import Preloader from "../Preloader/Preloader";
 function Main() {
   return (
     <main className="page__content">
-      {/* //TODO: after search Click  */}
-
       <NothingFound />
       <Preloader />
       <NewsCardList />
