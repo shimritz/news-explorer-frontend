@@ -16,7 +16,11 @@ function NewsCardList() {
 
   return (
     <div className="news-card">
-      <h1 className="news-card__header">Search results</h1>
+      {!isSavedArticlesPage ? (
+        <h1 className="news-card__header">Search results</h1>
+      ) : (
+        <div style={{ paddingTop: 32 }} />
+      )}
       <section className="news-card__list">
         {articles.map((article) => {
           return (

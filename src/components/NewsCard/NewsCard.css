@@ -64,15 +64,12 @@
 
 .article__key-word-label {
   margin: 0 auto;
-  /* height: 100%; */
   vertical-align: bottom;
   position: absolute;
   top: 24px;
   left: 24px;
   border-radius: 9px;
   background-color: white;
-  /* width: 87px; */
-  /* height: 40px; */
   padding: 8px 22px;
   margin: 0;
   text-align: center;
@@ -244,7 +241,13 @@
   }
 
   .article__key-word-label {
-    width: 80px;
+    top: 12px;
+    left: 12px;
+  }
+
+  .article__delete-btn {
+    top: 12px;
+    right: 12px;
   }
 
   .article__image {
