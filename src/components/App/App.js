@@ -16,6 +16,7 @@ function App() {
   const [isSignInOpen, setIsSignInOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const [onlineArticles, setOnlineArticles] = useState(null);
 
   const handleSignInButtonClick = (e) => {
     e.preventDefault();
@@ -65,11 +66,14 @@ function App() {
         />
 
         <div style={{ height: "100%" }}>
-          <Header handleSignInButtonClick={handleSignInButtonClick} />
+          <Header
+            handleSignInButtonClick={handleSignInButtonClick}
+            handleArticlesSearch={setOnlineArticles}
+          />
         </div>
 
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main onlineArticles={onlineArticles} />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route

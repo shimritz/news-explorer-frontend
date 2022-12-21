@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import NewsCard from "../NewsCard/NewsCard";
 import { articles } from "../../utils/articles";
 
-function NewsCardList() {
+function NewsCardList({ onlineArticles }) {
   const location = useLocation();
   const [isSavedArticlesPage, setIsSavedArticlesPage] = useState(false);
 
@@ -22,21 +22,36 @@ function NewsCardList() {
         <div style={{ paddingTop: 32 }} />
       )}
       <section className="news-card__list">
-        {articles.map((article) => {
-          return (
-            <NewsCard
-              key={article.id}
-              img={article.image}
-              title={article.title}
-              date={article.date}
-              text={article.text}
-              source={article.source}
-              isSavedArticlesPage={isSavedArticlesPage}
-              keywordLable={article.keywordLable}
-              // onCardClick={onCardClick}
-            />
-          );
-        })}
+        {onlineArticles
+          ? onlineArticles.map((article, index) => {
+              return (
+                <NewsCard
+                  key={index}
+                  img={article.urlToImage}
+                  title={article.title}
+                  date={article.publishedAt}
+                  text={article.description}
+                  source={article.author}
+                  isSavedArticlesPage={isSavedArticlesPage}
+                  // onCardClick={onCardClick}
+                />
+              );
+            })
+          : articles.map((article) => {
+              return (
+                <NewsCard
+                  key={article.id}
+                  img={article.image}
+                  title={article.title}
+                  date={article.date}
+                  text={article.text}
+                  source={article.source}
+                  isSavedArticlesPage={isSavedArticlesPage}
+                  keywordLable={article.keywordLable}
+                  // onCardClick={onCardClick}
+                />
+              );
+            })}
       </section>
       {isSavedArticlesPage ? null : (
         <button type="button" className="news-card__showMore-btn">
