@@ -1,5 +1,6 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import { useState } from "react";
+import mainApi from "../../utils/MainApi";
 
 function SignUp({
   isPopupOpen,
@@ -12,6 +13,11 @@ function SignUp({
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
 
+  function handleRegister(e) {
+    e.preventDefault();
+    handlePopupSubmit({ email, password, name: username });
+  }
+
   const validate = () => {
     return email.length > 0 && password.length > 0 && username.length > 0;
   };
@@ -23,7 +29,7 @@ function SignUp({
       redirect="signin"
       isPopupOpen={isPopupOpen}
       onClose={onClose}
-      onSubmit={handlePopupSubmit}
+      onSubmit={handleRegister}
       onRedirect={onRedirect}
       validate={validate}
     >

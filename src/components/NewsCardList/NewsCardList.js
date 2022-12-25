@@ -3,8 +3,12 @@ import { useEffect, useState } from "react";
 
 import NewsCard from "../NewsCard/NewsCard";
 import { articles } from "../../utils/articles";
+import mainApi from "../../utils/MainApi";
 
-function NewsCardList({ onlineArticles }) {
+function NewsCardList({ onlineArticles, searchValue }) {
+  console.log("articel", onlineArticles ? onlineArticles[0] : null);
+  const [savedArticles, setSavedArticles] = useState(null);
+
   const location = useLocation();
   const [isSavedArticlesPage, setIsSavedArticlesPage] = useState(false);
 
@@ -13,6 +17,23 @@ function NewsCardList({ onlineArticles }) {
       ? setIsSavedArticlesPage(true)
       : setIsSavedArticlesPage(false);
   }, [location]);
+
+  useEffect(() => {
+    if (isSavedArticlesPage) {
+      mainApi
+        .getSavedArticles()
+        .then((res) => {
+          console.log("here");
+          setSavedArticles(res.data);
+        })
+        .catch(console.error);
+    } else {
+      setSavedArticles(articles);
+    }
+  }, [isSavedArticlesPage]);
+
+  console.log("savedArticles", savedArticles);
+  console.log("isSavedArticlesPage", isSavedArticlesPage);
 
   return (
     <div className="news-card">
@@ -31,13 +52,16 @@ function NewsCardList({ onlineArticles }) {
                   title={article.title}
                   date={article.publishedAt}
                   text={article.description}
+                  link={article.url}
                   source={article.author}
                   isSavedArticlesPage={isSavedArticlesPage}
+                  keyword={searchValue}
                   // onCardClick={onCardClick}
                 />
               );
             })
-          : articles.map((article) => {
+          : savedArticles &&
+            savedArticles.map((article) => {
               return (
                 <NewsCard
                   key={article.id}
@@ -45,9 +69,10 @@ function NewsCardList({ onlineArticles }) {
                   title={article.title}
                   date={article.date}
                   text={article.text}
+                  link={article.link}
                   source={article.source}
                   isSavedArticlesPage={isSavedArticlesPage}
-                  keywordLable={article.keywordLable}
+                  keyword={article.keyword}
                   // onCardClick={onCardClick}
                 />
               );

@@ -1,15 +1,10 @@
-// import { getArticles } from "../../utils/NewsApi";
-// import zzz from "../../utils/NewsApi";
-import { useState } from "react";
 import newsApi from "../../utils/NewsApi";
 
-function SearchForm({ handleArticlesSearch }) {
-  const [searchvalue, setSearchvalue] = useState(null);
-
+function SearchForm({ handleArticlesSearch, searchValue, setSearchValue }) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const res = await newsApi.getArticles(searchvalue);
+      const res = await newsApi.getArticles(searchValue);
       handleArticlesSearch(res.articles);
       console.log("articles", res);
     } catch (error) {
@@ -27,7 +22,7 @@ function SearchForm({ handleArticlesSearch }) {
         <input
           className="search-form__field"
           placeholder="Enter a Topic"
-          onChange={(e) => setSearchvalue(e.target.value)}
+          onChange={(e) => setSearchValue(e.target.value)}
         ></input>
         <button type="submit" className="search-form__button">
           Search

@@ -1,9 +1,11 @@
 class NewsApi {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl, headers, key }) {
     this.baseUrl = baseUrl;
     this.headers = headers;
+    this.key = key;
     this.time = new Date();
   }
+
   _checkResponse = (res) => {
     return res.ok ? res.json() : Promise.reject(res);
   };
@@ -21,7 +23,7 @@ class NewsApi {
     const url = `${
       this.baseUrl
     }?q=${query}&from=${lastWeek}&to=${this.time.getTime()}&pageSize=100&apiKey=${
-      this.headers.authorization
+      this.key
     }`;
 
     return fetch(url).then(this._checkResponse);
@@ -31,9 +33,9 @@ class NewsApi {
 const newsApi = new NewsApi({
   baseUrl: "https://nomoreparties.co/news/v2/everything",
   headers: {
-    authorization: "54039bc4fcb84d34a7fe0cb591b2208f",
     "Content-Type": "application/json",
   },
+  key: process.env.REACT_APP_NEWS_API_KEY,
 });
 
 export default newsApi;

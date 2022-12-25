@@ -7,7 +7,14 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import SideDrawer from "../SideDrawer/SideDrawer";
 import Backdrop from "../Backdrop/Backdrop";
 
-function Header({ handleSignInButtonClick, handleArticlesSearch }) {
+function Header({
+  handleSignInButtonClick,
+  handleArticlesSearch,
+  setSearchValue,
+  searchValue,
+  onLogout,
+  isLoggedIn,
+}) {
   const location = useLocation();
   const [isBackgroundWhite, setIsBackgroundWhite] = useState(false);
   const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false);
@@ -37,6 +44,8 @@ function Header({ handleSignInButtonClick, handleArticlesSearch }) {
         isBackgroundWhite={isBackgroundWhite}
         handleSignInClick={handleSignInButtonClick}
         drawerClickHandler={drawerToggleClickHandler}
+        onLogout={onLogout}
+        isLoggedIn={isLoggedIn}
       />
       {/* {isSideDrawerOpen ? <SideDrawer /> && <Backdrop /> : ""} */}
       <SideDrawer show={isSideDrawerOpen} handleSignInClick={handleSignIn} />
@@ -51,7 +60,11 @@ function Header({ handleSignInButtonClick, handleArticlesSearch }) {
       {isBackgroundWhite ? (
         <SavedNewsHeader />
       ) : (
-        <SearchForm handleArticlesSearch={handleArticlesSearch} />
+        <SearchForm
+          handleArticlesSearch={handleArticlesSearch}
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+        />
       )}
     </header>
   );

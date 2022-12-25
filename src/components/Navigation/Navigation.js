@@ -6,16 +6,16 @@ import exitIcon from "../../assets/icons/exitIcon.svg";
 import exitIconWhite from "../../assets/icons/exitIconWhite.svg";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
 import { useLocation } from "react-router-dom";
-import { useLoggedIn } from "../../context/LoggedInContext";
 
 function Navigation({
   isBackgroundWhite,
   handleSignInClick,
   drawerClickHandler,
+  isLoggedIn,
+  onLogout,
 }) {
   const location = useLocation();
   const [isHomeTabOpen, setIsHomeTabOpen] = useState(false);
-  const { isLoggedIn, handleLogOut } = useLoggedIn();
 
   useEffect(() => {
     location.pathname === "/"
@@ -65,7 +65,7 @@ function Navigation({
         {isLoggedIn ? (
           <div
             className={isHomeTabOpen ? "signout__btn_white" : "signout__btn"}
-            onClick={handleLogOut}
+            onClick={onLogout}
           >
             Elise{" "}
             <img

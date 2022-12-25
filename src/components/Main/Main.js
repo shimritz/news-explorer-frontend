@@ -6,12 +6,12 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import NothingFound from "../NothingFound/NothingFound";
 import Preloader from "../Preloader/Preloader";
 
-function Main({ onlineArticles }) {
+function Main({ onlineArticles, searchValue }) {
   return (
     <main className="page__content">
       <NothingFound />
       <Preloader />
-      <NewsCardList onlineArticles={onlineArticles} />
+      <NewsCardList onlineArticles={onlineArticles} searchValue={searchValue} />
       <About />
       <Footer />
     </main>
