@@ -63,6 +63,11 @@
   padding-bottom: 26px;
 }
 
+.nav__link_selected_black {
+  border-bottom: solid 3px black;
+  padding-bottom: 26px;
+}
+
 .nav__signin-btn {
   width: 176px;
   height: 48px;

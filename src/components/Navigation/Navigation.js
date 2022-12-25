@@ -53,7 +53,7 @@ function Navigation({
             <Link
               className={[
                 isBackgroundWhite ? "nav__link_black" : "nav__link",
-                !isHomeTabOpen && "nav__link_selected",
+                !isHomeTabOpen && "nav__link_selected_black",
               ].join(" ")}
               to="/saved-news"
             >
