@@ -26,6 +26,7 @@ function NewsCardList({ articles, location, handleButtonClick }) {
                 isSavedArticlesPage={isSavedArticlesPage}
                 keyword={article.keyword}
                 handleButtonClick={handleButtonClick}
+                isSaved={article.saved}
               />
             );
           })}

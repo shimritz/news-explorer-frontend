@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from "react";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
-import mainApi from "../../utils/MainApi";
 import { useLocation } from "react-router-dom";
 
 function NewsCard({
@@ -14,10 +13,11 @@ function NewsCard({
   isSavedArticlesPage,
   keyword,
   handleButtonClick,
+  isSaved = false,
 }) {
   const currentUser = useContext(CurrentUserContext);
-  let [isClicked, setIsClicked] = useState(false);
-  let [cardId, setCardId] = useState(id);
+  let [isClicked, setIsClicked] = useState(isSaved);
+  // let [cardId, setCardId] = useState(id);
   let [articleSaveButtonClassName, setArticleSaveButtonClassName] =
     useState("article__save-btn");
   const location = useLocation();
@@ -30,42 +30,69 @@ function NewsCard({
     }
   }, [isClicked]);
 
-  async function handleSaveClick() {
-    if (isClicked) {
-      try {
-        mainApi.deleteArticle(cardId);
-      } catch (error) {
-        console.error(error);
-      }
-      setIsClicked(false);
-    } else {
-      const article = {
-        keyword,
-        title,
-        text,
-        date,
-        source,
-        link,
-        image: img,
-        owner: currentUser._id,
-      };
-      try {
-        const res = await mainApi.saveArticle(article);
-        setCardId(res.data._id);
-        setIsClicked(true);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }
+  // async function handleSaveClick() {
+  //   if (isClicked) {
+  //     try {
+  //       mainApi.deleteArticle(cardId);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //     setIsClicked(false);
+  //   } else {
+  //     const article = {
+  //       keyword,
+  //       title,
+  //       text,
+  //       date,
+  //       source,
+  //       link,
+  //       image: img,
+  //       owner: currentUser._id,
+  //     };
+  //     try {
+  //       const res = await mainApi.saveArticle(article);
+  //       setCardId(res.data._id);
+  //       setIsClicked(true);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  // }
 
   function handleDeleteClick() {
     try {
-      handleButtonClick(cardId);
+      handleButtonClick(id);
     } catch (error) {
       console.error(error);
     }
     setIsClicked(false);
+  }
+
+  async function handleSaveClick() {
+    try {
+      const res = await handleButtonClick(
+        id,
+        {
+          keyword,
+          title,
+          text,
+          date,
+          source,
+          link,
+          image: img,
+          owner: currentUser._id,
+        },
+        isClicked
+      );
+      if (res) {
+        // setCardId(res.data._id);
+        setIsClicked(true);
+      } else {
+        setIsClicked(false);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const buttonAction =

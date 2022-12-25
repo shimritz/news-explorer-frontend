@@ -150,7 +150,11 @@ function App() {
           <Route
             path="/"
             element={
-              <Main onlineArticles={onlineArticles} searchValue={searchValue} />
+              <Main
+                onlineArticles={onlineArticles}
+                setOnlineArticles={setOnlineArticles}
+                searchValue={searchValue}
+              />
             }
           />
           <Route path="/signin" element={<SignIn />} />

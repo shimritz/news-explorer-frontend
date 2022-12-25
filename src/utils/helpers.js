@@ -1,7 +1,7 @@
 export const transformOnlineToLocal = (data, searchValue) => {
   return data.map((article, index) => {
     return {
-      _id: index,
+      _id: article._id || index,
       image: article.urlToImage,
       title: article.title,
       date: article.publishedAt,
@@ -10,6 +10,7 @@ export const transformOnlineToLocal = (data, searchValue) => {
       link: article.url,
       isSavedArticlesPage: false,
       keyword: searchValue,
+      saved: article.saved || false,
     };
   });
 };
