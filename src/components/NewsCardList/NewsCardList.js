@@ -6,7 +6,6 @@ import { articles } from "../../utils/articles";
 import mainApi from "../../utils/MainApi";
 
 function NewsCardList({ onlineArticles, searchValue }) {
-  console.log("articel", onlineArticles ? onlineArticles[0] : null);
   const [savedArticles, setSavedArticles] = useState(null);
 
   const location = useLocation();
@@ -23,7 +22,6 @@ function NewsCardList({ onlineArticles, searchValue }) {
       mainApi
         .getSavedArticles()
         .then((res) => {
-          console.log("here");
           setSavedArticles(res.data);
         })
         .catch(console.error);
@@ -31,9 +29,6 @@ function NewsCardList({ onlineArticles, searchValue }) {
       setSavedArticles(articles);
     }
   }, [isSavedArticlesPage]);
-
-  console.log("savedArticles", savedArticles);
-  console.log("isSavedArticlesPage", isSavedArticlesPage);
 
   return (
     <div className="news-card">
@@ -48,6 +43,7 @@ function NewsCardList({ onlineArticles, searchValue }) {
               return (
                 <NewsCard
                   key={index}
+                  id={index}
                   img={article.urlToImage}
                   title={article.title}
                   date={article.publishedAt}
@@ -64,7 +60,8 @@ function NewsCardList({ onlineArticles, searchValue }) {
             savedArticles.map((article) => {
               return (
                 <NewsCard
-                  key={article.id}
+                  key={article._id}
+                  id={article._id}
                   img={article.image}
                   title={article.title}
                   date={article.date}

@@ -28,10 +28,9 @@ class MainApi {
   }
 
   deleteArticle(id) {
-    return fetch(`${this._baseUrl}/${id}`, {
+    return fetch(`${this._baseUrl}/articles/${id}`, {
       method: "DELETE",
       headers: this._headers,
-      body: JSON.stringify(id),
       mode: "cors",
     }).then(this._checkResponse);
   }
@@ -58,7 +57,6 @@ class MainApi {
 
   login(email, password) {
     const url = `${this._baseUrl}/signin`;
-    console.log("url", url);
 
     return fetch(url, {
       method: "POST",
@@ -68,7 +66,6 @@ class MainApi {
     })
       .then(this._checkResponse)
       .then((res) => {
-        console.log("reeees", res);
         localStorage.setItem(
           "user",
           JSON.stringify({ ...res.data, jwt: res.token })

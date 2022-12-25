@@ -1,10 +1,9 @@
-import React from "react";
-
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import mainApi from "../../utils/MainApi";
 
 function NewsCard({
+  id,
   img,
   title,
   date,
@@ -14,25 +13,46 @@ function NewsCard({
   isSavedArticlesPage,
   keyword,
 }) {
-  const currentUser = React.useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
   let [isClicked, setIsClicked] = useState(false);
+  let [cardId, setCardId] = useState(id);
+  let [articleSaveButtonClassName, setArticleSaveButtonClassName] =
+    useState("article__save-btn");
 
-  function handleSaveClick() {
-    setIsClicked(!isClicked);
-    const article = {
-      keyword,
-      title,
-      text,
-      date,
-      source,
-      link,
-      image: img,
-      owner: currentUser._id,
-    };
-    try {
-      mainApi.saveArticle(article);
-    } catch (error) {
-      console.error(error);
+  useEffect(() => {
+    if (isClicked) {
+      setArticleSaveButtonClassName("article__save-btn_type_selected");
+    } else {
+      setArticleSaveButtonClassName("article__save-btn");
+    }
+  }, [isClicked]);
+
+  async function handleSaveClick() {
+    if (isClicked) {
+      try {
+        mainApi.deleteArticle(cardId);
+      } catch (error) {
+        console.error(error);
+      }
+      setIsClicked(false);
+    } else {
+      const article = {
+        keyword,
+        title,
+        text,
+        date,
+        source,
+        link,
+        image: img,
+        owner: currentUser._id,
+      };
+      try {
+        const res = await mainApi.saveArticle(article);
+        setCardId(res.data._id);
+        setIsClicked(true);
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 
@@ -40,12 +60,8 @@ function NewsCard({
     setIsClicked(true);
   }
 
-  const articleSaveButtonClassName = ` ${
-    isClicked ? "article__save-btn_type_selected" : "article__save-btn"
-  }`;
-
   return (
-    <div id="article-template">
+    <div id={cardId}>
       <article className="article">
         <img className="article__image" src={img} alt="article" href={link} />
         {/* if isSavedArticlesPage true then add button x otherwise add button y */}

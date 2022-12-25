@@ -43,7 +43,6 @@ function App() {
     }
   }, [currentUser]);
 
-  console.log("currentUser", currentUser);
   const handleSignInButtonClick = (e) => {
     e.preventDefault();
     setIsSignUpOpen(false);
@@ -90,7 +89,6 @@ function App() {
     mainApi
       .login(email, password)
       .then((res) => {
-        console.log("res here", res);
         if (res.token && res.data) {
           setCurrentUser({
             _id: res.data._id,
@@ -100,7 +98,6 @@ function App() {
           });
           handleSubmitPopup();
         } else {
-          console.log("fialed to login", res);
           alert("failed to login");
         }
       })
