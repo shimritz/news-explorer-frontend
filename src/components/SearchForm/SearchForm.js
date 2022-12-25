@@ -6,7 +6,6 @@ function SearchForm({ handleArticlesSearch, searchValue, setSearchValue }) {
     try {
       const res = await newsApi.getArticles(searchValue);
       handleArticlesSearch(res.articles);
-      console.log("articles", res);
     } catch (error) {
       console.error(error);
     }
