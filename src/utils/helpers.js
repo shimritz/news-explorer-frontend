@@ -6,7 +6,7 @@ export const transformOnlineToLocal = (data, searchValue) => {
       title: article.title,
       date: article.publishedAt,
       text: article.description,
-      source: article.author,
+      source: article.author || article.source.name,
       link: article.url,
       isSavedArticlesPage: false,
       keyword: searchValue,

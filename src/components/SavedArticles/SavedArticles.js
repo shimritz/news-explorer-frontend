@@ -16,9 +16,26 @@ function SavedArticles() {
       .catch(console.error);
   }, []);
 
+  function handleDeleteClick(id) {
+    try {
+      mainApi.deleteArticle(id);
+      const updatedArticles = savedArticles.filter((article) => {
+        return article._id !== id;
+      });
+      setSavedArticles(updatedArticles);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <div className="saved-articles">
-      <NewsCardList articles={savedArticles} location="saved-news" />
+      <NewsCardList
+        articles={savedArticles}
+        location="saved-news"
+        setArticles={setSavedArticles}
+        handleButtonClick={handleDeleteClick}
+      />
       <Footer />
     </div>
   );

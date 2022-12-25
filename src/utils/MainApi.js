@@ -12,13 +12,10 @@ class MainApi {
   }
 
   _checkResponse = (res) => {
-    console.log("res", res);
     return res.ok ? res.json() : Promise.reject(res);
   };
 
   saveArticle(data) {
-    console.log("article to save", data);
-    console.log("headers", this._headers);
     return fetch(`${this._baseUrl}/articles/`, {
       method: "POST",
       headers: this._headers,

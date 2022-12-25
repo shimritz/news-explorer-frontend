@@ -1,6 +1,6 @@
 import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList({ articles, location }) {
+function NewsCardList({ articles, location, handleButtonClick }) {
   const isSavedArticlesPage = location === "saved-news";
 
   return (
@@ -25,6 +25,7 @@ function NewsCardList({ articles, location }) {
                 source={article.source}
                 isSavedArticlesPage={isSavedArticlesPage}
                 keyword={article.keyword}
+                handleButtonClick={handleButtonClick}
               />
             );
           })}

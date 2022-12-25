@@ -9,14 +9,12 @@ import { transformOnlineToLocal } from "../../utils/helpers";
 
 function Main({ onlineArticles, searchValue }) {
   const [formatedOnlineArticles, setformatedOnlineArticles] = useState(null);
-  console.log(onlineArticles ? onlineArticles[0] : null);
   useEffect(() => {
     if (onlineArticles && searchValue) {
       const transformetArticled = transformOnlineToLocal(
         onlineArticles,
         searchValue
       );
-      console.log(transformetArticled);
       setformatedOnlineArticles(transformetArticled);
     }
   }, [onlineArticles, searchValue]);
