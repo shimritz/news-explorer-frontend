@@ -17,7 +17,7 @@ function NewsCardList() {
   return (
     <div className="news-card">
       {!isSavedArticlesPage ? (
-        <h1 className="news-card__header">Search results</h1>
+        <h2 className="news-card__header">Search results</h2>
       ) : (
         <div style={{ paddingTop: 32 }} />
       )}
@@ -39,9 +39,11 @@ function NewsCardList() {
         })}
       </section>
       {isSavedArticlesPage ? null : (
-        <button type="button" className="news-card__showMore-btn">
-          Show More
-        </button>
+        <div className="news-card__showMore-btn-wrapper">
+          <button type="button" className="news-card__showMore-btn">
+            Show More
+          </button>
+        </div>
       )}
     </div>
     // </>

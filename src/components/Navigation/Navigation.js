@@ -64,7 +64,10 @@ function Navigation({
 
         {isLoggedIn ? (
           <div
-            className={isHomeTabOpen ? "signout__btn_white" : "signout__btn"}
+            // className={isHomeTabOpen ? "signout__btn_white" : "signout__btn"}
+            className={
+              isHomeTabOpen ? "nav__signout-btn_white" : "nav__signout-btn"
+            }
             onClick={handleLogOut}
           >
             Elise{" "}

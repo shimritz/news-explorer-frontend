@@ -1,5 +1,5 @@
 .search-form {
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: white;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
 }
 
 .search-form__title {
-  font-family: "Roboto-slab";
+  font-family: "Roboto-slab", Arial, Helvetica, sans-serif;
   font-size: 60px;
   line-height: 64px;
   font-weight: 400;
@@ -19,15 +19,13 @@
 }
 
 .search-form__subtitle {
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
 }
 
 .search-form__field-wrapper {
-  /* width: 100%; */
-  /* margin-top: 88px; */
   display: flex;
   width: 100%;
   background-color: transparent;
@@ -37,6 +35,10 @@
   border-radius: 50px;
   border: none;
   position: relative;
+}
+
+.search-form__field:focus {
+  outline: none;
 }
 
 .search-form__button {
@@ -78,13 +80,17 @@
   border-radius: 50px;
   border: none;
   color: #1a1b22;
-  /* margin: auto; */
 }
 
 @media (max-width: 768px) {
   .search-form {
     padding-top: 38px;
     padding-bottom: 48px;
+  }
+
+  .search-form__title {
+    font-size: 36px;
+    line-height: 40px;
   }
 
   .search-form__button {

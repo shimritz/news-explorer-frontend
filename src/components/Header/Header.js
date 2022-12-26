@@ -31,6 +31,10 @@ function Header({ handleSignInButtonClick }) {
     setIsSideDrawerOpen(false);
   };
 
+  const handleCloseSideDrawer = () => {
+    setIsSideDrawerOpen(false);
+  };
+
   return (
     <header className={isBackgroundWhite ? "headerLoggedIn" : "header"}>
       <Navigation
@@ -39,7 +43,11 @@ function Header({ handleSignInButtonClick }) {
         drawerClickHandler={drawerToggleClickHandler}
       />
       {/* {isSideDrawerOpen ? <SideDrawer /> && <Backdrop /> : ""} */}
-      <SideDrawer show={isSideDrawerOpen} handleSignInClick={handleSignIn} />
+      <SideDrawer
+        show={isSideDrawerOpen}
+        handleSignInClick={handleSignIn}
+        onClose={handleCloseSideDrawer}
+      />
       {isSideDrawerOpen ? (
         <div>
           {/* <SideDrawer show={isSideDrawerOpen} /> */}

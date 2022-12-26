@@ -6,6 +6,7 @@ function SignUp({
   // handleSignInButtonClick,
   onClose,
   handlePopupSubmit,
+  handleOpenInfoPopup,
   onRedirect,
 }) {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ function SignUp({
   return (
     <PopupWithForm
       title="sign up"
-      name="sign up"
+      name="sign-up"
       buttonText="sign up"
       redirect="signin"
       isPopupOpen={isPopupOpen}

@@ -26,7 +26,7 @@ function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
     // <div className="sign-up">
     <PopupWithForm
       title="sign in"
-      name="sign in"
+      name="sign-in"
       buttonText="sign in"
       redirect="signup"
       isPopupOpen={isPopupOpen}
