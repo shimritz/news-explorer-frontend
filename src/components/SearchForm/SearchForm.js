@@ -1,4 +1,4 @@
-function SearchForm() {
+function SearchForm({ handleSearchClick }) {
   return (
     <form className="search-form">
       <h1 className="search-form__title">Whats going on in the world</h1>
@@ -11,7 +11,11 @@ function SearchForm() {
           className="search-form__field"
           placeholder="Enter a Topic"
         ></input>
-        <button type="submit" className="search-form__button">
+        <button
+          type="submit"
+          className="search-form__button"
+          onClick={handleSearchClick}
+        >
           Search
         </button>
       </div>

@@ -25,12 +25,6 @@ function Navigation({
 
   return (
     <nav className="nav">
-      {/* <img className="nav__logo" src={logo} /> */}
-
-      {/* <img
-        className={isBackgroundWhite ? (src = { BlackLogo }) : (src = { logo })}
-      /> */}
-
       <img
         className="nav__logo"
         src={isBackgroundWhite ? logo_black : logo}

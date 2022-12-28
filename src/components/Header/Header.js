@@ -7,7 +7,7 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import SideDrawer from "../SideDrawer/SideDrawer";
 import Backdrop from "../Backdrop/Backdrop";
 
-function Header({ handleSignInButtonClick }) {
+function Header({ handleSignInButtonClick, handleSearchClick }) {
   const location = useLocation();
   const [isBackgroundWhite, setIsBackgroundWhite] = useState(false);
   const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false);
@@ -56,7 +56,11 @@ function Header({ handleSignInButtonClick }) {
       ) : (
         ""
       )}
-      {isBackgroundWhite ? <SavedNewsHeader /> : <SearchForm />}
+      {isBackgroundWhite ? (
+        <SavedNewsHeader />
+      ) : (
+        <SearchForm handleSearchClick={handleSearchClick} />
+      )}
     </header>
   );
 }

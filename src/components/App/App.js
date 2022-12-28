@@ -16,6 +16,18 @@ function App() {
   const [isSignInOpen, setIsSignInOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const [isPreLoaderOpen, setIsPreLoaderOpen] = useState(false);
+  const [isNothingFoundOpen, setIsNothingFoundOpen] = useState(false);
+
+  const handleSearchClick = (e) => {
+    e.preventDefault();
+    setIsPreLoaderOpen(true);
+
+    setTimeout(() => {
+      setIsPreLoaderOpen(false);
+      setIsNothingFoundOpen(true);
+    }, 3000);
+  };
 
   const handleSignInButtonClick = (e) => {
     e.preventDefault();
@@ -71,11 +83,23 @@ function App() {
         />
 
         <div style={{ height: "100%" }}>
-          <Header handleSignInButtonClick={handleSignInButtonClick} />
+          <Header
+            handleSignInButtonClick={handleSignInButtonClick}
+            handleSearchClick={handleSearchClick}
+          />
         </div>
 
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route
+            path="/"
+            element={
+              <Main
+                isPreLoaderOpen={isPreLoaderOpen}
+                isNothingFoundOpen={isNothingFoundOpen}
+                handleSearchClick={handleSearchClick}
+              />
+            }
+          />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route

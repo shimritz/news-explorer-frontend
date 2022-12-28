@@ -4,6 +4,9 @@
   background-color: #333;
 
   overflow: hidden;
+}
+
+.preload_hidden {
   display: none;
 }
 
@@ -29,5 +32,11 @@
 @keyframes spin {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .circle-preloader {
+    top: 150px;
   }
 }

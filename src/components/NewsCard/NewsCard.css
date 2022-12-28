@@ -36,7 +36,7 @@
 
   font-weight: 400;
   font-size: 26px;
-  margin-top: 0;
+  margin-top: 15px;
   margin-bottom: 0;
 }
 
@@ -50,7 +50,7 @@
   /* text-overflow: ellipsis; */
   /* max-width: 352px; */
   max-height: 110px;
-  margin-top: 0;
+  margin-top: 15px;
   margin-bottom: 0;
   /* white-space: nowrap; */
   overflow: hidden;
@@ -274,5 +274,13 @@
   } */
   .article__info {
     height: 243px;
+  }
+
+  .article__info_text {
+    margin-top: 14px;
+  }
+
+  .article__info_title {
+    margin-top: 10px;
   }
 }

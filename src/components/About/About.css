@@ -17,13 +17,13 @@
 }
 
 .about__info-header {
-  font-family: "Roboto-slab", "inter";
+  font-family: "Roboto-slab", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 40px;
   line-height: 46px;
 }
 .about__info-content {
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 18px;
   line-height: 24px;
 }

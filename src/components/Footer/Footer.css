@@ -28,7 +28,7 @@
 }
 
 .footer__nav-link {
-  font-family: "Roboto", "Inter";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;

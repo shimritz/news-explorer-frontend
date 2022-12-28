@@ -21,7 +21,7 @@
 }
 
 .news-card__header {
-  font-family: "Roboto-slab";
+  font-family: "Roboto-slab", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 40px;
   line-height: 46px;
@@ -32,7 +32,7 @@
 }
 
 .news-card__showMore-btn {
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-weight: 500;
   border-radius: 80px;
   border: none;
