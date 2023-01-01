@@ -1,0 +1,119 @@
+.news-card__showMore-btn-wrapper {
+  display: flex;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+.news-card {
+  background-color: #f5f6f7;
+  padding-right: 104px;
+  padding-left: 104px;
+}
+
+.news-card__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  list-style: none;
+  text-decoration: none;
+  padding-bottom: 64px;
+}
+
+.news-card__header {
+  font-family: "Roboto-slab", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  text-align: left;
+  padding-top: 80px;
+  padding-bottom: 64px;
+  margin: 0;
+}
+
+.news-card__showMore-btn {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  border-radius: 80px;
+  border: none;
+  padding: 20px 98px;
+  margin-bottom: 80px;
+  /* margin-left: 576px; */
+  font-size: 18px;
+  line-height: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.news-card__showMore-btn:hover {
+  background-color: #e8e8e8;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 937px) {
+  .news-card__header {
+    padding-top: 40px;
+    padding-bottom: 32px;
+    margin: 0;
+  }
+  .news-card {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .news-card__list {
+    gap: 8px;
+    padding-bottom: 32px;
+  }
+  .news-card__showMore-btn {
+    padding: 16px 74px;
+    margin-bottom: 40px;
+    /* margin-left: 272px; */
+  }
+}
+
+@media screen and (max-width: 795px) {
+  .news-card__header {
+    padding-top: 40px;
+    padding-bottom: 32px;
+    margin: 0;
+    font-size: 30px;
+    line-height: 34px;
+  }
+  .news-card {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .news-card__list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding-bottom: 32px;
+  }
+  .news-card__showMore-btn {
+    padding: 16px 74px;
+    margin-bottom: 40px;
+    /* margin-left: 272px; */
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .news-card__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    list-style: none;
+    text-decoration: none;
+    padding-bottom: 21px;
+  }
+  .news-card {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .news-card__showMore-btn {
+    margin-bottom: 24px;
+    /* margin-left: 25%;
+    white-space: nowrap; */
+  }
+}

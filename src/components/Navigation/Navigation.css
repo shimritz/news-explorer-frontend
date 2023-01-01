@@ -1,0 +1,130 @@
+.nav {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 0.5px solid #c4c4c4;
+  height: 77px;
+  position: relative;
+}
+
+.nav__logo {
+  width: 200px;
+  height: 24px;
+  margin-left: 104px;
+}
+
+.nav__links {
+  text-decoration: none;
+  display: flex;
+  align-self: flex-end;
+
+  margin-right: 104px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 40px;
+  flex-grow: 1;
+  width: 660px;
+  /* margin-bottom: 33px; */
+}
+
+.nav__link {
+  text-decoration: none;
+  color: white;
+  list-style-type: none;
+  transition: all 0.3s ease-out;
+}
+
+.nav__link_black {
+  text-decoration: none;
+  color: black;
+  list-style-type: none;
+  transition: all 0.3s ease-out;
+}
+
+.nav__link_black:hover {
+  border-bottom: solid 3px black;
+  text-decoration: none;
+  padding-bottom: 26px;
+}
+
+.nav__link:hover {
+  border-bottom: solid 3px #ffffff;
+  padding-bottom: 26px;
+}
+
+.nav__link_selected {
+  border-bottom: solid 3px #ffffff;
+  padding-bottom: 26px;
+}
+
+.nav__signin-btn {
+  width: 176px;
+  height: 48px;
+  border-radius: 100px;
+  color: white;
+  background-color: transparent;
+  border: 0.5px solid white;
+  padding: 12px;
+}
+
+/* .nav__signin-btn:hover {
+  cursor: pointer;
+} */
+
+.nav__signout-btn {
+  display: flex;
+
+  width: 112px;
+
+  /* height: 48px; */
+  padding: 12px;
+  justify-content: center;
+  gap: 17px;
+  color: black;
+  border: 0.5px solid black;
+  border-radius: 100px;
+}
+
+.nav__signout-btn_white {
+  display: flex;
+
+  width: 112px;
+
+  /* height: 48px; */
+  padding: 12px;
+  justify-content: center;
+  gap: 17px;
+  color: white;
+  border: 0.5px solid white;
+  border-radius: 100px;
+}
+
+.link {
+  list-style-type: none;
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .nav__logo {
+    margin-left: 40px;
+    width: 135px;
+  }
+  .nav__links {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 602px) {
+  .nav__logo {
+    width: 117px;
+    height: 24px;
+    padding: 16px 0;
+    margin: 0 0 0 16px;
+  }
+  .nav__links {
+    display: none;
+  }
+}
