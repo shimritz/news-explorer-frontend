@@ -17,10 +17,10 @@ function App() {
   const [isSignInOpen, setIsSignInOpen] = useState(false);
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const [isPreLoaderOpen, setIsPreLoaderOpen] = useState(false);
+  const [isNothingFoundOpen, setIsNothingFoundOpen] = useState(false);
   const [onlineArticles, setOnlineArticles] = useState(null);
   const [searchValue, setSearchValue] = useState(null);
-  // const [token, setToken] = React.useState(localStorage.getItem("jwt"));
-  // const [user, setUser] = React.useState();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(
@@ -43,12 +43,23 @@ function App() {
     }
   }, [currentUser]);
 
+  const handleSearchClick = (e) => {
+    e.preventDefault();
+    setIsPreLoaderOpen(true);
+
+    setTimeout(() => {
+      setIsPreLoaderOpen(false);
+      setIsNothingFoundOpen(true);
+    }, 3000);
+  };
+
   const handleSignInButtonClick = (e) => {
     e.preventDefault();
     setIsSignUpOpen(false);
     setIsSignInOpen(true);
     setIsInfoOpen(false);
   };
+
   const handleSignUpButtonClick = (e) => {
     e.preventDefault();
     setIsSignInOpen(false);
@@ -62,10 +73,22 @@ function App() {
   };
 
   function handleSubmitPopup() {
-    // e.preventDefault();
     setIsSignInOpen(false);
     setIsSignUpOpen(false);
     setIsInfoOpen(true);
+  }
+
+  function handleSignupSubmitPopup(e) {
+    e.preventDefault();
+    setIsSignInOpen(false);
+    setIsSignUpOpen(false);
+    setIsInfoOpen(true);
+  }
+
+  function handleSigninSubmitPopup(e) {
+    e.preventDefault();
+    setIsSignInOpen(false);
+    setIsSignUpOpen(false);
   }
 
   function onRegister({ email, password, name }) {
@@ -119,14 +142,14 @@ function App() {
         <SignIn
           isPopupOpen={isSignInOpen}
           onClose={handleClosePopup}
-          handlePopupSubmit={onLogin}
+          handlePopupSubmit={handleSigninSubmitPopup} // + onLogin
           onRedirect={handleSignUpButtonClick}
         />
         <SignUp
           isPopupOpen={isSignUpOpen}
           handleSignInButtonClick={handleSignInButtonClick}
           onClose={handleClosePopup}
-          handlePopupSubmit={onRegister}
+          handlePopupSubmit={handleSignupSubmitPopup} // + onRegister
           onRedirect={handleSignInButtonClick}
         />
         <InfoTooltip
@@ -138,6 +161,7 @@ function App() {
         <div style={{ height: "100%" }}>
           <Header
             handleSignInButtonClick={handleSignInButtonClick}
+            handleSearchClick={handleSearchClick}
             handleArticlesSearch={setOnlineArticles}
             searchValue={searchValue}
             setSearchValue={setSearchValue}
@@ -151,6 +175,9 @@ function App() {
             path="/"
             element={
               <Main
+                isPreLoaderOpen={isPreLoaderOpen}
+                isNothingFoundOpen={isNothingFoundOpen}
+                handleSearchClick={handleSearchClick}
                 onlineArticles={onlineArticles}
                 setOnlineArticles={setOnlineArticles}
                 searchValue={searchValue}
@@ -173,5 +200,3 @@ function App() {
     </CurrentUserContext.Provider>
   );
 }
-
-export default App;

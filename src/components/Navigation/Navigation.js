@@ -25,12 +25,6 @@ function Navigation({
 
   return (
     <nav className="nav">
-      {/* <img className="nav__logo" src={logo} /> */}
-
-      {/* <img
-        className={isBackgroundWhite ? (src = { BlackLogo }) : (src = { logo })}
-      /> */}
-
       <img
         className="nav__logo"
         src={isBackgroundWhite ? logo_black : logo}
@@ -53,7 +47,7 @@ function Navigation({
             <Link
               className={[
                 isBackgroundWhite ? "nav__link_black" : "nav__link",
-                !isHomeTabOpen && "nav__link_selected_black",
+                !isHomeTabOpen && "nav__link_selected",
               ].join(" ")}
               to="/saved-news"
             >
@@ -64,7 +58,9 @@ function Navigation({
 
         {isLoggedIn ? (
           <div
-            className={isHomeTabOpen ? "signout__btn_white" : "signout__btn"}
+            className={
+              isHomeTabOpen ? "nav__signout-btn_white" : "nav__signout-btn"
+            }
             onClick={onLogout}
           >
             Elise{" "}

@@ -10,13 +10,14 @@
 .info__heading {
   width: 315px;
   height: 56px;
-  font-family: "Roboto";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 24px;
   line-height: 28px;
   font-weight: 900;
   /* margin-left: 36px; */
   margin-right: 79px;
   margin-top: 43px;
+  color: black;
 }
 
 .info__link {
@@ -44,4 +45,15 @@
 
 .info__link:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 440px) {
+  .info__heading {
+    font-weight: 900;
+    padding-left: 0;
+  }
+
+  .info__wrapper {
+    padding-left: 10px;
+  }
 }

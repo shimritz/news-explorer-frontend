@@ -9,6 +9,7 @@ import Backdrop from "../Backdrop/Backdrop";
 
 function Header({
   handleSignInButtonClick,
+  handleSearchClick,
   handleArticlesSearch,
   setSearchValue,
   searchValue,
@@ -38,6 +39,10 @@ function Header({
     setIsSideDrawerOpen(false);
   };
 
+  const handleCloseSideDrawer = () => {
+    setIsSideDrawerOpen(false);
+  };
+
   return (
     <header className={isBackgroundWhite ? "headerLoggedIn" : "header"}>
       <Navigation
@@ -48,7 +53,11 @@ function Header({
         isLoggedIn={isLoggedIn}
       />
       {/* {isSideDrawerOpen ? <SideDrawer /> && <Backdrop /> : ""} */}
-      <SideDrawer show={isSideDrawerOpen} handleSignInClick={handleSignIn} />
+      <SideDrawer
+        show={isSideDrawerOpen}
+        handleSignInClick={handleSignIn}
+        onClose={handleCloseSideDrawer}
+      />
       {isSideDrawerOpen ? (
         <div>
           {/* <SideDrawer show={isSideDrawerOpen} /> */}
@@ -61,6 +70,7 @@ function Header({
         <SavedNewsHeader />
       ) : (
         <SearchForm
+          handleSearchClick={handleSearchClick}
           handleArticlesSearch={handleArticlesSearch}
           setSearchValue={setSearchValue}
           searchValue={searchValue}

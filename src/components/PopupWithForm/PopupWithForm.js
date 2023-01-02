@@ -11,6 +11,8 @@ function PopupWithForm({
   onRedirect,
   validate = null,
 }) {
+  const isInfoTooltip = name === "info" ? true : false;
+
   const handleEscClose = (e) => {
     if (e.key === "Escape") {
       onClose();
@@ -28,37 +30,46 @@ function PopupWithForm({
           aria-label="close-button"
           onClick={onClose}
         />
-        <form action="submit" className="form" name={name} onSubmit={onSubmit}>
-          <h1 className="form__title">{title}</h1>
-          {children}
-          <button
-            className={`popup__button ${
-              validate && !validate() ? "popup__button_disabled" : ""
-            }`}
-            type="submit"
-            onClick={submit}
-            disabled={validate ? !validate() : false}
+        {!isInfoTooltip ? (
+          <form
+            action="submit"
+            className="form"
+            name={name}
+            onSubmit={onSubmit}
           >
-            {buttonText}
-          </button>
-
-          <p
-            className={
-              name && name === "info"
-                ? "popup__redirect_hidden"
-                : "popup__redirect"
-            }
-          >
-            or{" "}
+            <h2 className="form__title">{title}</h2>
+            {children}
             <button
-              className="popup__redirect-button"
-              type="button"
-              onClick={onRedirect}
+              className={`popup__button ${
+                validate && !validate() ? "popup__button_disabled" : ""
+              }`}
+              type="submit"
+              onClick={submit}
+              disabled={validate ? !validate() : false}
             >
-              {redirect}
+              {buttonText}
             </button>
-          </p>
-        </form>
+
+            <p
+              className={
+                name && name === "info"
+                  ? "popup__redirect_hidden"
+                  : "popup__redirect"
+              }
+            >
+              or{" "}
+              <button
+                className="popup__redirect-button"
+                type="button"
+                onClick={onRedirect}
+              >
+                {redirect}
+              </button>
+            </p>
+          </form>
+        ) : (
+          <div className="info__container">{children}</div>
+        )}
       </div>
     </div>
   );

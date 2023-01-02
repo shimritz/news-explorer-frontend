@@ -32,9 +32,11 @@ function NewsCardList({ articles, location, handleButtonClick }) {
           })}
       </section>
       {location === "home" ? null : (
-        <button type="button" className="news-card__showMore-btn">
-          Show More
-        </button>
+        <div className="news-card__showMore-btn-wrapper">
+          <button type="button" className="news-card__showMore-btn">
+            Show More
+          </button>
+        </div>
       )}
     </div>
   );

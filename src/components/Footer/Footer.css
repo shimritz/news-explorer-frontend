@@ -28,7 +28,7 @@
 }
 
 .footer__nav-link {
-  font-family: "Roboto", "Inter";
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
@@ -62,7 +62,7 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 555px) {
   .footer {
     padding: 20px 18px 22px 16px;
   }

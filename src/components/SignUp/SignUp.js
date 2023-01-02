@@ -1,14 +1,7 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import { useState } from "react";
-import mainApi from "../../utils/MainApi";
 
-function SignUp({
-  isPopupOpen,
-  // handleSignInButtonClick,
-  onClose,
-  handlePopupSubmit,
-  onRedirect,
-}) {
+function SignUp({ isPopupOpen, onClose, handlePopupSubmit, onRedirect }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -24,7 +17,7 @@ function SignUp({
   return (
     <PopupWithForm
       title="sign up"
-      name="sign up"
+      name="sign-up"
       buttonText="sign up"
       redirect="signin"
       isPopupOpen={isPopupOpen}

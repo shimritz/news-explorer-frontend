@@ -1,34 +1,32 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
+import { useLoggedIn } from "../../context/LoggedInContext";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-// import { useLoggedInContext } from "../../context/LoggedInContext";
 
 function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
+  const { setIsLoggedIn } = useLoggedIn();
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const { setIsLoggedIn, setCurrentUser } = useLoggedInContext();
 
   const validate = () => {
     return email.length > 0 && password.length > 0;
   };
 
   function handleSubmit(e) {
-    e.preventDefault();
-    handlePopupSubmit({ email, password });
+    handlePopupSubmit(e);
+    // handlePopupSubmit({ email, password }); stage 3
 
-    // setCurrentUser(currentUser);
-    // setIsLoggedIn(true);
-    // });
-    // setCurrentUser({
-    //   _id: re
-    // })
-    // setIsLoggedIn(true);
-    // navigate("/saved-news");
+    setIsLoggedIn(true);
+    navigate("/saved-news");
   }
 
   return (
+    // <div className="sign-up">
     <PopupWithForm
       title="sign in"
-      name="sign in"
+      name="sign-in"
       buttonText="sign in"
       redirect="signup"
       isPopupOpen={isPopupOpen}

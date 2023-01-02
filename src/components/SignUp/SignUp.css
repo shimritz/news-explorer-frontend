@@ -1,5 +1,5 @@
 .form__fieldset {
-  font-family: "inter";
+  font-family: "inter", Arial, Helvetica, sans-serif;
   border: none;
   display: flex;
   flex-direction: column;
