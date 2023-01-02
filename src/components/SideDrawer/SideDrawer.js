@@ -1,19 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useLoggedIn } from "../../context/LoggedInContext";
-import exitIcon from "../../assets/icons/exitIcon.svg";
 import exitIconWhite from "../../assets/icons/exitIconWhite.svg";
 import logo from "../../assets/icons/logo.png";
 
 const SideDrawer = ({
   show,
   handleSignInClick,
+  handleLogOutClick,
   isBackgroundWhite,
-  isHomeTabOpen,
   onClose,
-  // isLoggedIn,
+  isLoggedIn,
 }) => {
-  const { isLoggedIn, handleLogOut } = useLoggedIn();
   return (
     <nav className={`side-drawer ${show ? "side-drawer__open" : ""}`}>
       <div className="side-drawer__header">
@@ -30,7 +26,7 @@ const SideDrawer = ({
           <a href="/">Home</a>
         </li>
 
-        {isLoggedIn && (
+        {show && (
           // <li className="link">
           <li
             className={
@@ -44,7 +40,10 @@ const SideDrawer = ({
         )}
 
         {isLoggedIn ? (
-          <div className="signout__btn_white-mobile" onClick={handleLogOut}>
+          <div
+            className="signout__btn_white-mobile"
+            onClick={handleLogOutClick}
+          >
             Elise <img src={exitIconWhite} alt="exit icon" />
           </div>
         ) : (

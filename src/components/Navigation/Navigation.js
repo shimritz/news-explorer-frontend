@@ -12,7 +12,7 @@ function Navigation({
   handleSignInClick,
   drawerClickHandler,
   isLoggedIn,
-  onLogout,
+  handleLogOutClick,
 }) {
   const location = useLocation();
   const [isHomeTabOpen, setIsHomeTabOpen] = useState(false);
@@ -61,7 +61,7 @@ function Navigation({
             className={
               isHomeTabOpen ? "nav__signout-btn_white" : "nav__signout-btn"
             }
-            onClick={onLogout}
+            onClick={handleLogOutClick}
           >
             Elise{" "}
             <img

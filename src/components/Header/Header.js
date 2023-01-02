@@ -13,7 +13,7 @@ function Header({
   handleArticlesSearch,
   setSearchValue,
   searchValue,
-  onLogout,
+  handleLogOutClick,
   isLoggedIn,
 }) {
   const location = useLocation();
@@ -49,14 +49,16 @@ function Header({
         isBackgroundWhite={isBackgroundWhite}
         handleSignInClick={handleSignInButtonClick}
         drawerClickHandler={drawerToggleClickHandler}
-        onLogout={onLogout}
+        handleLogOutClick={handleLogOutClick}
         isLoggedIn={isLoggedIn}
       />
       {/* {isSideDrawerOpen ? <SideDrawer /> && <Backdrop /> : ""} */}
       <SideDrawer
         show={isSideDrawerOpen}
         handleSignInClick={handleSignIn}
+        handleLogOutClick={handleLogOutClick}
         onClose={handleCloseSideDrawer}
+        isLoggedIn={isLoggedIn}
       />
       {isSideDrawerOpen ? (
         <div>

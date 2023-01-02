@@ -72,23 +72,16 @@ function App() {
     setIsInfoOpen(false);
   };
 
-  function handleSubmitPopup() {
+  function handleSignupSubmitPopup() {
     setIsSignInOpen(false);
     setIsSignUpOpen(false);
     setIsInfoOpen(true);
   }
 
-  function handleSignupSubmitPopup(e) {
-    e.preventDefault();
+  function handleSigninSubmitPopup() {
     setIsSignInOpen(false);
     setIsSignUpOpen(false);
-    setIsInfoOpen(true);
-  }
-
-  function handleSigninSubmitPopup(e) {
-    e.preventDefault();
-    setIsSignInOpen(false);
-    setIsSignUpOpen(false);
+    setIsInfoOpen(false);
   }
 
   function onRegister({ email, password, name }) {
@@ -96,7 +89,7 @@ function App() {
       .register(email, password, name)
       .then((res) => {
         if (res.data._id) {
-          handleSubmitPopup();
+          handleSignupSubmitPopup();
         } else {
           console.log("res:", res);
           alert("failed to sign up");
@@ -119,7 +112,7 @@ function App() {
             name: res.data.name,
             token: res.token,
           });
-          handleSubmitPopup();
+          handleSigninSubmitPopup();
         } else {
           alert("failed to login");
         }
@@ -142,14 +135,14 @@ function App() {
         <SignIn
           isPopupOpen={isSignInOpen}
           onClose={handleClosePopup}
-          handlePopupSubmit={handleSigninSubmitPopup} // + onLogin
+          handlePopupSubmit={onLogin}
           onRedirect={handleSignUpButtonClick}
         />
         <SignUp
           isPopupOpen={isSignUpOpen}
           handleSignInButtonClick={handleSignInButtonClick}
           onClose={handleClosePopup}
-          handlePopupSubmit={handleSignupSubmitPopup} // + onRegister
+          handlePopupSubmit={onRegister}
           onRedirect={handleSignInButtonClick}
         />
         <InfoTooltip
@@ -165,7 +158,7 @@ function App() {
             handleArticlesSearch={setOnlineArticles}
             searchValue={searchValue}
             setSearchValue={setSearchValue}
-            onLogout={onLogout}
+            handleLogOutClick={onLogout}
             isLoggedIn={isLoggedIn}
           />
         </div>
@@ -200,3 +193,5 @@ function App() {
     </CurrentUserContext.Provider>
   );
 }
+
+export default App;
