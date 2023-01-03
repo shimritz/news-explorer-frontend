@@ -11,8 +11,6 @@ import mainApi from "../../utils/MainApi";
 function Main({ onlineArticles, setOnlineArticles, searchValue }) {
   const [formatedOnlineArticles, setformatedOnlineArticles] = useState(null);
   useEffect(() => {
-    console.log("onlineArticles", onlineArticles);
-    console.log("searchValue", searchValue);
     if (onlineArticles && searchValue) {
       const transformedArticled = transformOnlineToLocal(
         onlineArticles,
@@ -21,7 +19,6 @@ function Main({ onlineArticles, setOnlineArticles, searchValue }) {
       setformatedOnlineArticles(transformedArticled);
     }
   }, [onlineArticles, searchValue]);
-  console.log("formatedOnlineArticles", formatedOnlineArticles);
 
   async function handleSaveClick(id, article, isClicked) {
     if (isClicked) {
@@ -38,10 +35,6 @@ function Main({ onlineArticles, setOnlineArticles, searchValue }) {
           (article) => article._id === id
         );
 
-        console.log("onlineArticles", onlineArticles);
-        console.log("index", savedArticlesIndex);
-        console.log("id", id);
-        console.log("res", res);
         const updatedArticles = [...onlineArticles];
         updatedArticles[savedArticlesIndex]._id = res.data._id;
         updatedArticles[savedArticlesIndex].saved = true;

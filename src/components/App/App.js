@@ -85,42 +85,25 @@ function App() {
   }
 
   function onRegister({ email, password, name }) {
-    mainApi
-      .register(email, password, name)
-      .then((res) => {
-        if (res.data._id) {
-          handleSignupSubmitPopup();
-        } else {
-          console.log("res:", res);
-          alert("failed to sign up");
-        }
-      })
-      .catch((e) => {
-        console.error(e);
-        alert("failed to sign up");
-      });
+    return mainApi.register(email, password, name).then((res) => {
+      handleSignupSubmitPopup();
+      return res;
+    });
   }
 
   function onLogin({ email, password }) {
-    mainApi
-      .login(email, password)
-      .then((res) => {
-        if (res.token && res.data) {
-          setCurrentUser({
-            _id: res.data._id,
-            email: res.data.email,
-            name: res.data.name,
-            token: res.token,
-          });
-          handleSigninSubmitPopup();
-        } else {
-          alert("failed to login");
-        }
-      })
-      .catch((e) => {
-        console.error(e);
-        alert("failed to login");
-      });
+    return mainApi.login(email, password).then((res) => {
+      if (res.token && res.data) {
+        setCurrentUser({
+          _id: res.data._id,
+          email: res.data.email,
+          name: res.data.name,
+          token: res.token,
+        });
+        handleSigninSubmitPopup();
+        return res;
+      }
+    });
   }
 
   function onLogout() {

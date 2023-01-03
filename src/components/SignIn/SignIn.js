@@ -1,17 +1,26 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import { useState } from "react";
+import { useFormWithValidation } from "../../utils/useForm";
 
 function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const validate = () => {
-    return email.length > 0 && password.length > 0;
-  };
+  const {
+    values,
+    handleChange,
+    errors,
+    isValid,
+    resetForm,
+    serverError,
+    setServerError,
+  } = useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
-    handlePopupSubmit({ email, password });
+    handlePopupSubmit({ email: values.email, password: values.password })
+      .then(() => {
+        resetForm();
+      })
+      .catch((err) => {
+        if (err.message) setServerError(err.message);
+      });
   }
 
   return (
@@ -24,7 +33,7 @@ function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       onRedirect={onRedirect}
-      validate={validate}
+      isValid={isValid}
     >
       <fieldset className="form__fieldset">
         <h3 className="form__input-title">Email</h3>
@@ -33,26 +42,30 @@ function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
           name="email"
           className="form__input"
           placeholder="Enter Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={values.email || ""}
+          onChange={handleChange}
           required
         />
-        <span className="form__input-error"></span>
+        <span className="form__input-error email-input-error">
+          {errors.email}
+        </span>
         <h3 className="form__input-title">Password</h3>
         <input
           type="password"
           name="password"
           className="form__input"
           placeholder="Enter Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={values.password || ""}
+          onChange={handleChange}
           required
         />
-        <span className="form__input-error"></span>
+        <span className="form__input-error password-input-error">
+          {errors.password}
+        </span>
 
-        {/* <span className="form__input-error form__input-error_type-general">
-            "loggedError"
-          </span> */}
+        <span className="form__input-error form__input-error_type-general">
+          {serverError}
+        </span>
       </fieldset>
     </PopupWithForm>
   );

@@ -24,10 +24,13 @@ function NewsCard({
 
   useEffect(() => {
     if (isClicked) {
-      setArticleSaveButtonClassName("article__save-btn_type_selected");
-    } else {
-      setArticleSaveButtonClassName("article__save-btn");
+      console.log("isClicked reactive", isClicked);
+      console.log("id reactive", id);
     }
+
+    isClicked
+      ? setArticleSaveButtonClassName("article__save-btn_type_selected")
+      : setArticleSaveButtonClassName("article__save-btn");
   }, [isClicked]);
 
   // async function handleSaveClick() {
@@ -59,18 +62,20 @@ function NewsCard({
   //   }
   // }
 
-  function handleDeleteClick() {
+  async function handleDeleteClick() {
+    console.log("delete clicked");
     try {
-      handleButtonClick(id);
+      await handleButtonClick(id);
+      setIsClicked(false);
     } catch (error) {
       console.error(error);
     }
-    setIsClicked(false);
   }
 
   async function handleSaveClick() {
+    console.log("handleSaveClick clicked");
     try {
-      const res = await handleButtonClick(
+      await handleButtonClick(
         id,
         {
           keyword,
@@ -84,12 +89,12 @@ function NewsCard({
         },
         isClicked
       );
-      if (res) {
-        // setCardId(res.data._id);
-        setIsClicked(true);
-      } else {
-        setIsClicked(false);
-      }
+      // console.log("res", res);
+      // if (res) {
+      // setCardId(res.data._id);
+      const revertClicked = !isClicked;
+      setIsClicked(revertClicked);
+      // }
     } catch (error) {
       console.error(error);
     }

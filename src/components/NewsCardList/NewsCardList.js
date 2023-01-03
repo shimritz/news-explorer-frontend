@@ -1,6 +1,8 @@
+import { memo } from "react";
 import NewsCard from "../NewsCard/NewsCard";
 
 function NewsCardList({ articles, location, handleButtonClick }) {
+  console.log("NewsCardList", "rendered");
   const isSavedArticlesPage = location === "saved-news";
 
   return (
@@ -42,4 +44,4 @@ function NewsCardList({ articles, location, handleButtonClick }) {
   );
 }
 
-export default NewsCardList;
+export default memo(NewsCardList);

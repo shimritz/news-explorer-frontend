@@ -11,8 +11,8 @@ class MainApi {
     this._headers = headers;
   }
 
-  _checkResponse = (res) => {
-    return res.ok ? res.json() : Promise.reject(res);
+  _checkResponse = async (res) => {
+    return res.ok ? res.json() : Promise.reject(await res.json());
   };
 
   saveArticle(data) {
@@ -33,7 +33,7 @@ class MainApi {
   }
 
   getSavedArticles() {
-    console.log("headers", this._headers);
+    // console.log("headers", this._headers);
     return fetch(`${this._baseUrl}/articles`, {
       method: "GET",
       headers: this._headers,

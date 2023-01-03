@@ -9,7 +9,7 @@ function PopupWithForm({
   buttonText,
   redirect,
   onRedirect,
-  validate = null,
+  isValid, // solve issue with infotooltip
 }) {
   const isInfoTooltip = name === "info" ? true : false;
 
@@ -41,11 +41,11 @@ function PopupWithForm({
             {children}
             <button
               className={`popup__button ${
-                validate && !validate() ? "popup__button_disabled" : ""
+                !isValid ? "popup__button_disabled" : ""
               }`}
               type="submit"
               onClick={submit}
-              disabled={validate ? !validate() : false}
+              disabled={!isValid}
             >
               {buttonText}
             </button>
