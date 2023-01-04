@@ -4,17 +4,22 @@ import Footer from "../Footer/Footer";
 
 import mainApi from "../../utils/MainApi";
 
-function SavedArticles() {
-  const [savedArticles, setSavedArticles] = useState(null);
-
+function SavedArticles({ setSavedArticles, savedArticles }) {
   useEffect(() => {
     mainApi
       .getSavedArticles()
       .then((res) => {
+        console.log("res", res);
         setSavedArticles(res.data);
+        // console.log(savedArticles[0]);
       })
       .catch(console.error);
   }, []);
+
+  // const count = savedArticles.reduce(
+  //   (counter, obj) => (obj._id === "0" ? (counter += 1) : counter),
+  //   0
+  // );
 
   function handleDeleteClick(id) {
     try {

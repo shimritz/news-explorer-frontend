@@ -16,6 +16,7 @@ function Header({
   handleLogOutClick,
   isLoggedIn,
   currentUser,
+  savedArticles,
 }) {
   const location = useLocation();
   const [isBackgroundWhite, setIsBackgroundWhite] = useState(false);
@@ -71,7 +72,10 @@ function Header({
         ""
       )}
       {isBackgroundWhite ? (
-        <SavedNewsHeader />
+        <SavedNewsHeader
+          currentUser={currentUser}
+          savedArticles={savedArticles}
+        />
       ) : (
         <SearchForm
           handleSearchClick={handleSearchClick}

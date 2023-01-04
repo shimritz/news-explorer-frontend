@@ -73,7 +73,6 @@ function NewsCard({
   }
 
   async function handleSaveClick() {
-    console.log("handleSaveClick clicked");
     try {
       await handleButtonClick(
         id,

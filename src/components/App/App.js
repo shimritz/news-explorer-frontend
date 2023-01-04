@@ -23,6 +23,7 @@ function App() {
   const [searchValue, setSearchValue] = useState(null);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [savedArticles, setSavedArticles] = useState(null);
   const [currentUser, setCurrentUser] = useState(
     localStorage.getItem("user")
       ? JSON.parse(localStorage.getItem("user"))
@@ -145,6 +146,7 @@ function App() {
             handleLogOutClick={onLogout}
             isLoggedIn={isLoggedIn}
             currentUser={currentUser}
+            savedArticles={savedArticles}
           />
         </div>
 
@@ -168,7 +170,10 @@ function App() {
             path="/saved-news"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <SavedArticles />
+                <SavedArticles
+                  savedArticles={savedArticles}
+                  setSavedArticles={setSavedArticles}
+                />
               </ProtectedRoute>
             }
           />
