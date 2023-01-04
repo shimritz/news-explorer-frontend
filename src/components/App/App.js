@@ -35,7 +35,8 @@ function App() {
     if (currentUser) {
       mainApi.setAuthorizationHeader(currentUser.jwt);
       setIsLoggedIn(true);
-      navigate("/saved-news");
+      // navigate("/saved-news");
+      navigate("/");
     } else {
       mainApi.setAuthorizationHeader(null);
       setIsLoggedIn(false);
@@ -143,6 +144,7 @@ function App() {
             setSearchValue={setSearchValue}
             handleLogOutClick={onLogout}
             isLoggedIn={isLoggedIn}
+            currentUser={currentUser}
           />
         </div>
 

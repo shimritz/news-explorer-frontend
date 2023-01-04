@@ -15,6 +15,7 @@ function Header({
   searchValue,
   handleLogOutClick,
   isLoggedIn,
+  currentUser,
 }) {
   const location = useLocation();
   const [isBackgroundWhite, setIsBackgroundWhite] = useState(false);
@@ -51,6 +52,7 @@ function Header({
         drawerClickHandler={drawerToggleClickHandler}
         handleLogOutClick={handleLogOutClick}
         isLoggedIn={isLoggedIn}
+        currentUser={currentUser}
       />
       {/* {isSideDrawerOpen ? <SideDrawer /> && <Backdrop /> : ""} */}
       <SideDrawer

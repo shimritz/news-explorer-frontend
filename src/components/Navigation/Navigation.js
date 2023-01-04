@@ -13,6 +13,7 @@ function Navigation({
   drawerClickHandler,
   isLoggedIn,
   handleLogOutClick,
+  currentUser,
 }) {
   const location = useLocation();
   const [isHomeTabOpen, setIsHomeTabOpen] = useState(false);
@@ -63,7 +64,7 @@ function Navigation({
             }
             onClick={handleLogOutClick}
           >
-            Elise{" "}
+            {currentUser ? currentUser.name : ""}
             <img
               src={isHomeTabOpen ? exitIconWhite : exitIcon}
               alt="exit icon"
