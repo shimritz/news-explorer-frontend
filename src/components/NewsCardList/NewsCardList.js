@@ -3,7 +3,6 @@ import { memo } from "react";
 import NewsCard from "../NewsCard/NewsCard";
 
 function NewsCardList({ articles, location, handleButtonClick }) {
-  console.log("NewsCardList", "rendered");
   const isSavedArticlesPage = location === "saved-news";
   const [cardsToShow, setCardsToShow] = useState(3);
 

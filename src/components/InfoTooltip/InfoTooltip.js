@@ -16,22 +16,4 @@ function InfoTooltip({ isPopupOpen, onClose, handleSignInButtonClick }) {
   );
 }
 
-// {
-//   status === "success" ? (
-//     <div>
-//       <img className="popup__icon" src={SuccessIcon} alt="" />
-//       <p className="popup__status-message">
-//         Sucess! You have now been registered.
-//       </p>
-//     </div>
-//   ) : (
-//     <div>
-//       <img className="popup__icon" src={ErrorIcon} alt="" />
-//       <p className="popup__status-message">
-//         Oops, something went wrong! Please try again.
-//       </p>
-//     </div>
-//   );
-// }
-
 export default InfoTooltip;

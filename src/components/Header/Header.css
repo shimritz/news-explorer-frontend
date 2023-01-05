@@ -4,7 +4,7 @@
   display: flex;
   flex-flow: wrap;
   justify-content: space-around;
-  /* align-items: center; */
+
   background-image: url("../../assets/images/bg_search_img.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,8 +12,7 @@
 
 .headerLoggedIn {
   margin: 0 auto;
-  /* max-width: 880px; */
-  /* border-bottom: rgba(84, 84, 84, 0.7) 1px solid; */
+
   display: flex;
   flex-flow: wrap;
 

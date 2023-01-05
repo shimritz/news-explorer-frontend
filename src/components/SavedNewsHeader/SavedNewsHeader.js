@@ -1,13 +1,10 @@
+import { orginizeKeywords } from "../../utils/keywords";
+
 function SavedNewsHeader({ currentUser, savedArticles }) {
-  console.log("saved", savedArticles);
   let keywords = [];
   if (savedArticles) {
-    for (let i = 0; i < savedArticles.length; i++) {
-      // console.log(i, savedArticles[i].keyword);
-      keywords.push(savedArticles[i].keyword);
-    }
+    keywords = orginizeKeywords(savedArticles);
   }
-  console.log("keywords", keywords);
 
   return (
     <div className="savedArticles-info">
@@ -17,9 +14,11 @@ function SavedNewsHeader({ currentUser, savedArticles }) {
           savedArticles && savedArticles.length
         } saved articles`}
       </h1>
-      <p className="savedArticles-info__key-words">
-        {`By keywords: ${keywords.join(", ")}`}
-      </p>
+      {keywords && (
+        <p className="savedArticles-info__key-words">
+          {`By keywords: ${keywords}`}
+        </p>
+      )}
     </div>
   );
 }
