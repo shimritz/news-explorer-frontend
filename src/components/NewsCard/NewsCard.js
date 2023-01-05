@@ -33,35 +33,6 @@ function NewsCard({
       : setArticleSaveButtonClassName("article__save-btn");
   }, [isClicked]);
 
-  // async function handleSaveClick() {
-  //   if (isClicked) {
-  //     try {
-  //       mainApi.deleteArticle(cardId);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //     setIsClicked(false);
-  //   } else {
-  //     const article = {
-  //       keyword,
-  //       title,
-  //       text,
-  //       date,
-  //       source,
-  //       link,
-  //       image: img,
-  //       owner: currentUser._id,
-  //     };
-  //     try {
-  //       const res = await mainApi.saveArticle(article);
-  //       setCardId(res.data._id);
-  //       setIsClicked(true);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   }
-  // }
-
   async function handleDeleteClick() {
     console.log("delete clicked");
     try {
@@ -71,6 +42,15 @@ function NewsCard({
       console.error(error);
     }
   }
+  const formatDate = (date) => {
+    const newDate = new Date(date);
+    const options = {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    };
+    return newDate.toLocaleDateString("en-US", options);
+  };
 
   async function handleSaveClick() {
     try {
@@ -88,12 +68,9 @@ function NewsCard({
         },
         isClicked
       );
-      // console.log("res", res);
-      // if (res) {
-      // setCardId(res.data._id);
+
       const revertClicked = !isClicked;
       setIsClicked(revertClicked);
-      // }
     } catch (error) {
       console.error(error);
     }
@@ -103,7 +80,6 @@ function NewsCard({
     location.pathname === "/saved-news" ? handleDeleteClick : handleSaveClick;
 
   return (
-    // <div id={cardId}>
     <article className="article">
       <img className="article__image" src={img} alt="article" href={link} />
       {/* if isSavedArticlesPage true then add button x otherwise add button y */}
@@ -112,7 +88,6 @@ function NewsCard({
           type="button"
           className="article__delete-btn"
           second_data-hover="Remove from saved"
-          // className="article__save-btn article__save-btn_type_selected"
           aria-label="Delete article"
           onClick={buttonAction}
         />
@@ -120,9 +95,7 @@ function NewsCard({
         <button
           type="button"
           className={articleSaveButtonClassName}
-          // className="article__save-btn_type_selected"
           data-hover="Sign in to save articles"
-          // className="article__save-btn article__save-btn_type_selected"
           aria-label="save article"
           onClick={buttonAction}
         />
@@ -131,7 +104,7 @@ function NewsCard({
         <p className="article__key-word-label">{keyword}</p>
       ) : null}
       <div className="article__info">
-        <p className="article__info_date">{date}</p>
+        <p className="article__info_date">{formatDate(date)}</p>
         <h2 className="article__info_title">{title}</h2>
         <p className="article__info_text">{text}</p>
         <div className="article__footer">
@@ -139,7 +112,6 @@ function NewsCard({
         </div>
       </div>
     </article>
-    // </div>
   );
 }
 
