@@ -23,18 +23,12 @@ function NewsCard({
   const location = useLocation();
 
   useEffect(() => {
-    if (isClicked) {
-      console.log("isClicked reactive", isClicked);
-      console.log("id reactive", id);
-    }
-
     isClicked
       ? setArticleSaveButtonClassName("article__save-btn_type_selected")
       : setArticleSaveButtonClassName("article__save-btn");
   }, [isClicked]);
 
   async function handleDeleteClick() {
-    console.log("delete clicked");
     try {
       await handleButtonClick(id);
       setIsClicked(false);

@@ -39,7 +39,7 @@ function NewsCardList({ articles, location, handleButtonClick }) {
             );
           })}
       </section>
-      {!isSavedArticlesPage ? (
+      {!isSavedArticlesPage && articles && articles.length > 0 ? (
         <div className="news-card__showMore-btn-wrapper">
           <button
             type="button"
@@ -54,4 +54,4 @@ function NewsCardList({ articles, location, handleButtonClick }) {
   );
 }
 
-export default memo(NewsCardList);
+export default NewsCardList;

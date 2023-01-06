@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Routes, Route } from "react-router-dom";
 import Main from "../Main/Main";
 import SavedArticles from "../SavedArticles/SavedArticles";
@@ -20,8 +20,8 @@ function App() {
   const [isPreLoaderOpen, setIsPreLoaderOpen] = useState(false);
   const [isNothingFoundOpen, setIsNothingFoundOpen] = useState(false);
   const [onlineArticles, setOnlineArticles] = useState(null);
+  const onlineArticlesRef = useRef(onlineArticles);
   const [searchValue, setSearchValue] = useState(null);
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [savedArticles, setSavedArticles] = useState(null);
   const [currentUser, setCurrentUser] = useState(
@@ -29,6 +29,7 @@ function App() {
       ? JSON.parse(localStorage.getItem("user"))
       : null
   );
+  const [isSearchClicked, setIsSearchClicked] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,15 +46,33 @@ function App() {
     }
   }, [currentUser]);
 
-  const handleSearchClick = (e) => {
-    e.preventDefault();
-    setIsPreLoaderOpen(true);
+  React.useEffect(() => {
+    if (!isSearchClicked) return;
+    let timer;
 
-    setTimeout(() => {
+    timer = setTimeout(() => {
       setIsPreLoaderOpen(false);
-      setIsNothingFoundOpen(true);
-    }, 3000);
+      if (!onlineArticles) setIsNothingFoundOpen(true);
+      setIsSearchClicked(false);
+    }, 2000);
+
+    if (onlineArticles) {
+      if (timer) clearTimeout(timer);
+      setIsPreLoaderOpen(false);
+      setIsSearchClicked(false);
+    }
+
+    return () => clearTimeout(timer);
+  }, [onlineArticles]);
+
+  let handleSearchClick = () => {
+    setIsSearchClicked(true);
+    setIsPreLoaderOpen(true);
+    setOnlineArticles(null);
+    setIsNothingFoundOpen(false);
   };
+
+  handleSearchClick = handleSearchClick.bind(this);
 
   const handleSignInButtonClick = (e) => {
     e.preventDefault();

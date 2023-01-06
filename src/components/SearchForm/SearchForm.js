@@ -1,14 +1,26 @@
 import newsApi from "../../utils/NewsApi";
 
-function SearchForm({ handleArticlesSearch, searchValue, setSearchValue }) {
+function SearchForm({
+  handleArticlesSearch,
+  searchValue,
+  setSearchValue,
+  handleSearchClick,
+}) {
   async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const res = await newsApi.getArticles(searchValue);
-      handleArticlesSearch(res.articles);
-      console.log("from searchform", res.articles);
-    } catch (error) {
-      console.error(error);
+
+    if (searchValue.length > 0) {
+      handleSearchClick();
+      try {
+        const res = await newsApi.getArticles(searchValue);
+        if (res.articles && res.articles.length > 0) {
+          handleArticlesSearch(res.articles);
+        } else {
+          handleArticlesSearch(null);
+        }
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
   return (
@@ -28,19 +40,6 @@ function SearchForm({ handleArticlesSearch, searchValue, setSearchValue }) {
           Search
         </button>
       </div>
-      {/* <input
-        type="email"
-        placeholder="Enter your email address"
-        class="footer__form-input"
-      />
-      <button class="footer__form-button button button_type_dark">
-        Join
-        <img
-          src="./images/tiny-arrow.png"
-          alt="arrow icon"
-          class="footer__button-icon"
-        />
-      </button> */}
     </form>
   );
 }

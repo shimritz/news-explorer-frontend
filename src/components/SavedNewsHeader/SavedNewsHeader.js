@@ -11,10 +11,10 @@ function SavedNewsHeader({ currentUser, savedArticles }) {
       <p className="savedArticles-info__header">Saved articles</p>
       <h1 className="savedArticles-info__display-amount">
         {`${currentUser.name}, you have ${
-          savedArticles && savedArticles.length
+          savedArticles ? savedArticles.length : 0
         } saved articles`}
       </h1>
-      {keywords && (
+      {keywords && keywords.length > 0 && (
         <p className="savedArticles-info__key-words">
           {`By keywords: ${keywords}`}
         </p>

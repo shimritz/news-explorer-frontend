@@ -8,7 +8,13 @@ import Preloader from "../Preloader/Preloader";
 import { transformOnlineToLocal } from "../../utils/helpers";
 import mainApi from "../../utils/MainApi";
 
-function Main({ onlineArticles, setOnlineArticles, searchValue }) {
+function Main({
+  onlineArticles,
+  setOnlineArticles,
+  searchValue,
+  isNothingFoundOpen,
+  isPreLoaderOpen,
+}) {
   const [formatedOnlineArticles, setformatedOnlineArticles] = useState(null);
   useEffect(() => {
     if (onlineArticles && searchValue) {
@@ -17,6 +23,8 @@ function Main({ onlineArticles, setOnlineArticles, searchValue }) {
         searchValue
       );
       setformatedOnlineArticles(transformedArticled);
+    } else {
+      setformatedOnlineArticles(null);
     }
   }, [onlineArticles, searchValue]);
 
@@ -48,8 +56,8 @@ function Main({ onlineArticles, setOnlineArticles, searchValue }) {
 
   return (
     <main className="page__content">
-      <NothingFound />
-      <Preloader />
+      <NothingFound isNothingFoundOpen={isNothingFoundOpen} />
+      <Preloader isPreLoaderOpen={isPreLoaderOpen} />
       <NewsCardList
         articles={formatedOnlineArticles}
         location="main"

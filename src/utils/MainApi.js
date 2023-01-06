@@ -33,7 +33,6 @@ class MainApi {
   }
 
   getSavedArticles() {
-    // console.log("headers", this._headers);
     return fetch(`${this._baseUrl}/articles`, {
       method: "GET",
       headers: this._headers,

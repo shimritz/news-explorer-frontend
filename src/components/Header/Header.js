@@ -55,7 +55,6 @@ function Header({
         isLoggedIn={isLoggedIn}
         currentUser={currentUser}
       />
-      {/* {isSideDrawerOpen ? <SideDrawer /> && <Backdrop /> : ""} */}
       <SideDrawer
         show={isSideDrawerOpen}
         handleSignInClick={handleSignIn}
@@ -65,7 +64,6 @@ function Header({
       />
       {isSideDrawerOpen ? (
         <div>
-          {/* <SideDrawer show={isSideDrawerOpen} /> */}
           <Backdrop click={backdropClickHandler} />
         </div>
       ) : (
