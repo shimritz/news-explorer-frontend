@@ -2,7 +2,12 @@ import { useState } from "react";
 import { memo } from "react";
 import NewsCard from "../NewsCard/NewsCard";
 
-function NewsCardList({ articles, location, handleButtonClick }) {
+function NewsCardList({
+  articles,
+  location,
+  handleButtonClick,
+  setIsSignInOpen,
+}) {
   const isSavedArticlesPage = location === "saved-news";
   const [cardsToShow, setCardsToShow] = useState(3);
 
@@ -35,6 +40,7 @@ function NewsCardList({ articles, location, handleButtonClick }) {
                 keyword={article.keyword}
                 handleButtonClick={handleButtonClick}
                 isSaved={article.saved}
+                setIsSignInOpen={setIsSignInOpen}
               />
             );
           })}

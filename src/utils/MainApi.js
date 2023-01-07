@@ -1,10 +1,3 @@
-//TODO
-//   createUser-register
-// login
-//get userBiId
-//getCurrentUser
-// }
-
 class MainApi {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -74,10 +67,13 @@ class MainApi {
     this._headers["Authorization"] = "Bearer " + token;
   }
 }
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.news-explorer-sz.students.nomoredomainssbs.ru"
+    : "http://localhost:3001";
 
 const mainApi = new MainApi({
-  // baseUrl: "https://api.news-explorer-sz.students.nomoredomainssbs.ru",
-  baseUrl: "http://localhost:3001",
+  baseUrl,
   headers: {
     "Content-Type": "application/json",
   },

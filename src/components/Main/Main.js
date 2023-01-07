@@ -14,6 +14,7 @@ function Main({
   searchValue,
   isNothingFoundOpen,
   isPreLoaderOpen,
+  setIsSignInOpen,
 }) {
   const [formatedOnlineArticles, setformatedOnlineArticles] = useState(null);
   useEffect(() => {
@@ -62,6 +63,7 @@ function Main({
         articles={formatedOnlineArticles}
         location="main"
         handleButtonClick={handleSaveClick}
+        setIsSignInOpen={setIsSignInOpen}
       />
       <About />
       <Footer />

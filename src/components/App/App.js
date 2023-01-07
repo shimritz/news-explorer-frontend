@@ -180,6 +180,7 @@ function App() {
                 onlineArticles={onlineArticles}
                 setOnlineArticles={setOnlineArticles}
                 searchValue={searchValue}
+                setIsSignInOpen={setIsSignInOpen}
               />
             }
           />

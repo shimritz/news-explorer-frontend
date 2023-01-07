@@ -14,6 +14,7 @@ function NewsCard({
   keyword,
   handleButtonClick,
   isSaved = false,
+  setIsSignInOpen,
 }) {
   const currentUser = useContext(CurrentUserContext);
   let [isClicked, setIsClicked] = useState(isSaved);
@@ -47,6 +48,11 @@ function NewsCard({
   };
 
   async function handleSaveClick() {
+    if (!currentUser) {
+      setIsSignInOpen(true);
+      return;
+    }
+
     try {
       await handleButtonClick(
         id,
