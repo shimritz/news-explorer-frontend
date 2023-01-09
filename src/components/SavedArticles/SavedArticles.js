@@ -4,7 +4,12 @@ import Footer from "../Footer/Footer";
 
 import mainApi from "../../utils/MainApi";
 
-function SavedArticles({ setSavedArticles, savedArticles }) {
+function SavedArticles({
+  setSavedArticles,
+  savedArticles,
+  onlineArticles,
+  setOnlineArticles,
+}) {
   useEffect(() => {
     mainApi
       .getSavedArticles()
@@ -17,10 +22,17 @@ function SavedArticles({ setSavedArticles, savedArticles }) {
   function handleDeleteClick(id) {
     try {
       mainApi.deleteArticle(id);
-      const updatedArticles = savedArticles.filter((article) => {
+      const updatedSavedArticles = savedArticles?.filter((article) => {
         return article._id !== id;
       });
-      setSavedArticles(updatedArticles);
+      setSavedArticles(updatedSavedArticles);
+      const updatedOnlineArticles = onlineArticles?.map((article) => {
+        if (article._id === id && article.saved) {
+          article.saved = false;
+        }
+        return article;
+      });
+      setOnlineArticles(updatedOnlineArticles);
     } catch (error) {
       console.error(error);
     }

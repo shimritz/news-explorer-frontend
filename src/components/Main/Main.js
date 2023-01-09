@@ -33,6 +33,13 @@ function Main({
     if (isClicked) {
       try {
         mainApi.deleteArticle(id);
+        const revertSaveArticlesIndex = formatedOnlineArticles.findIndex(
+          (article) => article._id === id
+        );
+
+        const updatedArticles = [...onlineArticles];
+        updatedArticles[revertSaveArticlesIndex].saved = false;
+        setOnlineArticles([...updatedArticles]);
       } catch (error) {
         console.error(error);
       }

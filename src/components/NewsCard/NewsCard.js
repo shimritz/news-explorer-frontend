@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, memo } from "react";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { useLocation } from "react-router-dom";
 
@@ -115,4 +115,4 @@ function NewsCard({
   );
 }
 
-export default NewsCard;
+export default memo(NewsCard);

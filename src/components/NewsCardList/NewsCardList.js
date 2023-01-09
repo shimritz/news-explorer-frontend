@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { memo } from "react";
 import NewsCard from "../NewsCard/NewsCard";
 
 function NewsCardList({

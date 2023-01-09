@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Main from "../Main/Main";
 import SavedArticles from "../SavedArticles/SavedArticles";
@@ -20,7 +20,6 @@ function App() {
   const [isPreLoaderOpen, setIsPreLoaderOpen] = useState(false);
   const [isNothingFoundOpen, setIsNothingFoundOpen] = useState(false);
   const [onlineArticles, setOnlineArticles] = useState(null);
-  const onlineArticlesRef = useRef(onlineArticles);
   const [searchValue, setSearchValue] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [savedArticles, setSavedArticles] = useState(null);
@@ -193,6 +192,8 @@ function App() {
                 <SavedArticles
                   savedArticles={savedArticles}
                   setSavedArticles={setSavedArticles}
+                  onlineArticles={onlineArticles}
+                  setOnlineArticles={setOnlineArticles}
                 />
               </ProtectedRoute>
             }
