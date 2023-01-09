@@ -224,6 +224,11 @@
   letter-spacing: 0.4;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 @media screen and (max-width: 768px) {
   .article__info_title {
     font-size: 22px;

@@ -1,7 +1,9 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import { useFormWithValidation } from "../../utils/useForm";
+import { useNavigate } from "react-router-dom";
 
 function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
+  const navigate = useNavigate();
   const {
     values,
     handleChange,
@@ -17,6 +19,7 @@ function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
     handlePopupSubmit({ email: values.email, password: values.password })
       .then(() => {
         resetForm();
+        navigate("/");
       })
       .catch((err) => {
         if (err.message) setServerError(err.message);

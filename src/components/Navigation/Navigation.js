@@ -16,12 +16,14 @@ function Navigation({
   currentUser,
 }) {
   const location = useLocation();
-  const [isHomeTabOpen, setIsHomeTabOpen] = useState(false);
+  const [isHomeTabOpen, setIsDarkBackground] = useState(false);
 
   useEffect(() => {
-    location.pathname === "/"
-      ? setIsHomeTabOpen(true)
-      : setIsHomeTabOpen(false);
+    location.pathname === "/" ||
+    location.pathname === "/signin" ||
+    location.pathname === "/signup"
+      ? setIsDarkBackground(true)
+      : setIsDarkBackground(false);
   }, [location.pathname]);
 
   return (

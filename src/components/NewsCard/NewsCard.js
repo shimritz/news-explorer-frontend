@@ -80,8 +80,7 @@ function NewsCard({
 
   return (
     <article className="article">
-      <img className="article__image" src={img} alt="article" href={link} />
-      {/* if isSavedArticlesPage true then add button x otherwise add button y */}
+      <img className="article__image" src={img} alt="article" />
       {isSavedArticlesPage ? (
         <button
           type="button"
@@ -104,7 +103,9 @@ function NewsCard({
       ) : null}
       <div className="article__info">
         <p className="article__info_date">{formatDate(date)}</p>
-        <h2 className="article__info_title">{title}</h2>
+        <a href={link}>
+          <h2 className="article__info_title">{title}</h2>
+        </a>
         <p className="article__info_text">{text}</p>
         <div className="article__footer">
           <h2 className="article__footer_source-name">{source}</h2>

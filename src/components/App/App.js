@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Main from "../Main/Main";
 import SavedArticles from "../SavedArticles/SavedArticles";
 import Error from "../Error/Error";
@@ -12,6 +13,8 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { useNavigate } from "react-router-dom";
 import mainApi from "../../utils/MainApi";
+import SignInPage from "../SignInPage/SignInPage";
+import SignUpPage from "../SignUpPage/SignUpPage";
 
 function App() {
   const [isSignInOpen, setIsSignInOpen] = useState(false);
@@ -29,19 +32,18 @@ function App() {
       : null
   );
   const [isSearchClicked, setIsSearchClicked] = useState(false);
-
+  const location = useLocation();
   const navigate = useNavigate();
 
   React.useEffect(() => {
     if (currentUser) {
       mainApi.setAuthorizationHeader(currentUser.jwt);
       setIsLoggedIn(true);
-      // navigate("/saved-news");
-      navigate("/");
+      navigate(location.pathname);
     } else {
       mainApi.setAuthorizationHeader(null);
       setIsLoggedIn(false);
-      navigate("/");
+      // navigate("/");
     }
   }, [currentUser]);
 
@@ -183,8 +185,26 @@ function App() {
               />
             }
           />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/signin"
+            element={
+              <SignInPage
+                isSignInOpen={isSignInOpen}
+                setisSignInOpen={setIsSignInOpen}
+                isLoggedIn={isLoggedIn}
+              />
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <SignUpPage
+                isSignUpOpen={isSignUpOpen}
+                setisSignUpOpen={setIsSignUpOpen}
+                isLoggedIn={isLoggedIn}
+              />
+            }
+          />
           <Route
             path="/saved-news"
             element={
