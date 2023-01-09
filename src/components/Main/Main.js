@@ -27,7 +27,7 @@ function Main({
     } else {
       setformatedOnlineArticles(null);
     }
-  }, [onlineArticles, searchValue]);
+  }, [onlineArticles]);
 
   async function handleSaveClick(id, article, isClicked) {
     if (isClicked) {

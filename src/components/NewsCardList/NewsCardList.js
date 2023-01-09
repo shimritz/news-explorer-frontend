@@ -22,8 +22,7 @@ function NewsCardList({
         <div style={{ paddingTop: 32 }} />
       )}
       <section className="news-card__list">
-        {articles &&
-          // articles.map((article) => {
+        {/* {articles &&
           articles.slice(0, cardsToShow).map((article) => {
             return (
               <NewsCard
@@ -42,9 +41,49 @@ function NewsCardList({
                 setIsSignInOpen={setIsSignInOpen}
               />
             );
-          })}
+          })} */}
+
+        {isSavedArticlesPage
+          ? articles?.map((article) => {
+              return (
+                <NewsCard
+                  key={article._id}
+                  id={article._id}
+                  img={article.image}
+                  title={article.title}
+                  date={article.date}
+                  text={article.text}
+                  link={article.link}
+                  source={article.source}
+                  isSavedArticlesPage={isSavedArticlesPage}
+                  keyword={article.keyword}
+                  handleButtonClick={handleButtonClick}
+                  isSaved={article.saved}
+                  setIsSignInOpen={setIsSignInOpen}
+                />
+              );
+            })
+          : articles?.slice(0, cardsToShow).map((article) => {
+              return (
+                <NewsCard
+                  key={article._id}
+                  id={article._id}
+                  img={article.image}
+                  title={article.title}
+                  date={article.date}
+                  text={article.text}
+                  link={article.link}
+                  source={article.source}
+                  isSavedArticlesPage={isSavedArticlesPage}
+                  keyword={article.keyword}
+                  handleButtonClick={handleButtonClick}
+                  isSaved={article.saved}
+                  setIsSignInOpen={setIsSignInOpen}
+                />
+              );
+            })}
       </section>
-      {!isSavedArticlesPage && articles && articles.length > 0 ? (
+      {!isSavedArticlesPage && articles?.length > 0 ? (
         <div className="news-card__showMore-btn-wrapper">
           <button
             type="button"

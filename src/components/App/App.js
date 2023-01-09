@@ -20,7 +20,7 @@ function App() {
   const [isPreLoaderOpen, setIsPreLoaderOpen] = useState(false);
   const [isNothingFoundOpen, setIsNothingFoundOpen] = useState(false);
   const [onlineArticles, setOnlineArticles] = useState(null);
-  const [searchValue, setSearchValue] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [savedArticles, setSavedArticles] = useState(null);
   const [currentUser, setCurrentUser] = useState(

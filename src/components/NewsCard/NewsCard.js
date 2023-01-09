@@ -18,7 +18,6 @@ function NewsCard({
 }) {
   const currentUser = useContext(CurrentUserContext);
   let [isClicked, setIsClicked] = useState(isSaved);
-  // let [cardId, setCardId] = useState(id);
   let [articleSaveButtonClassName, setArticleSaveButtonClassName] =
     useState("article__save-btn");
   const location = useLocation();

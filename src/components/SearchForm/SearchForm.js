@@ -6,6 +6,10 @@ function SearchForm({
   setSearchValue,
   handleSearchClick,
 }) {
+  function handleSearchValueChange(e) {
+    setSearchValue(e.target.value);
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -34,7 +38,8 @@ function SearchForm({
         <input
           className="search-form__field"
           placeholder="Enter a Topic"
-          onChange={(e) => setSearchValue(e.target.value)}
+          value={searchValue}
+          onChange={handleSearchValueChange}
         ></input>
         <button type="submit" className="search-form__button">
           Search
