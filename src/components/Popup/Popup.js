@@ -1,13 +1,22 @@
+import { useCallback, useEffect } from "react";
+
 function Popup({ isPopupOpen, name, onClose, children }) {
-  const handleEscClose = (e) => {
+  const handleEscClose = useCallback((e) => {
     if (e.key === "Escape") {
       onClose();
     }
-  };
-  document.addEventListener("keydown", handleEscClose);
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscClose, false);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose, false);
+    };
+  }, []);
 
   return (
-    <div>
+    <>
       {isPopupOpen && (
         <div className={`popup popup_type_${name} popup_open`}>
           <div className="popup__container">
@@ -21,7 +30,7 @@ function Popup({ isPopupOpen, name, onClose, children }) {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
