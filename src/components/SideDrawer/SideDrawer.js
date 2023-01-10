@@ -25,14 +25,10 @@ const SideDrawer = ({
         <li className="side-drawer__links-link">
           <a href="/">Home</a>
         </li>
-
-        {show && (
-          // <li className="link">
+        {isLoggedIn && show && (
           <li
             className={
               isBackgroundWhite ? "nav__link_black" : "side-drawer__links-link"
-              // !isHomeTabOpen && "nav__link_selected",
-              // ].join(" ")}
             }
           >
             <a href="/saved-news"> Saved articles</a>
