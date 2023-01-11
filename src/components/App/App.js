@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Main from "../Main/Main";
 import SavedArticles from "../SavedArticles/SavedArticles";
 import Error from "../Error/Error";
@@ -9,8 +10,11 @@ import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import LoggedInContextProvider from "../../context/LoggedInContext";
-import { useLoggedIn } from "../../context/LoggedInContext";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
+import { useNavigate } from "react-router-dom";
+import mainApi from "../../utils/MainApi";
+import SignInPage from "../SignInPage/SignInPage";
+import SignUpPage from "../SignUpPage/SignUpPage";
 
 function App() {
   const [isSignInOpen, setIsSignInOpen] = useState(false);
@@ -18,16 +22,58 @@ function App() {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [isPreLoaderOpen, setIsPreLoaderOpen] = useState(false);
   const [isNothingFoundOpen, setIsNothingFoundOpen] = useState(false);
+  const [onlineArticles, setOnlineArticles] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [savedArticles, setSavedArticles] = useState(null);
+  const [currentUser, setCurrentUser] = useState(
+    localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : null
+  );
+  const [isSearchClicked, setIsSearchClicked] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleSearchClick = (e) => {
-    e.preventDefault();
-    setIsPreLoaderOpen(true);
+  React.useEffect(() => {
+    if (currentUser) {
+      mainApi.setAuthorizationHeader(currentUser.jwt);
+      setIsLoggedIn(true);
+      navigate(location.pathname);
+    } else {
+      mainApi.setAuthorizationHeader(null);
+      setIsLoggedIn(false);
+      // navigate("/");
+    }
+  }, [currentUser]);
 
-    setTimeout(() => {
+  React.useEffect(() => {
+    if (!isSearchClicked) return;
+    let timer;
+
+    timer = setTimeout(() => {
       setIsPreLoaderOpen(false);
-      setIsNothingFoundOpen(true);
-    }, 3000);
+      if (!onlineArticles) setIsNothingFoundOpen(true);
+      setIsSearchClicked(false);
+    }, 2000);
+
+    if (onlineArticles) {
+      if (timer) clearTimeout(timer);
+      setIsPreLoaderOpen(false);
+      setIsSearchClicked(false);
+    }
+
+    return () => clearTimeout(timer);
+  }, [onlineArticles]);
+
+  let handleSearchClick = () => {
+    setIsSearchClicked(true);
+    setIsPreLoaderOpen(true);
+    setOnlineArticles(null);
+    setIsNothingFoundOpen(false);
   };
+
+  handleSearchClick = handleSearchClick.bind(this);
 
   const handleSignInButtonClick = (e) => {
     e.preventDefault();
@@ -35,6 +81,7 @@ function App() {
     setIsSignInOpen(true);
     setIsInfoOpen(false);
   };
+
   const handleSignUpButtonClick = (e) => {
     e.preventDefault();
     setIsSignInOpen(false);
@@ -47,33 +94,60 @@ function App() {
     setIsInfoOpen(false);
   };
 
-  function handleSignupSubmitPopup(e) {
-    e.preventDefault();
+  function handleSignupSubmitPopup() {
     setIsSignInOpen(false);
     setIsSignUpOpen(false);
     setIsInfoOpen(true);
   }
 
-  function handleSigninSubmitPopup(e) {
-    e.preventDefault();
+  function handleSigninSubmitPopup() {
     setIsSignInOpen(false);
     setIsSignUpOpen(false);
+    setIsInfoOpen(false);
+  }
+
+  function onRegister({ email, password, name }) {
+    return mainApi.register(email, password, name).then((res) => {
+      handleSignupSubmitPopup();
+      return res;
+    });
+  }
+
+  function onLogin({ email, password }) {
+    return mainApi.login(email, password).then((res) => {
+      if (res.token && res.data) {
+        setCurrentUser({
+          _id: res.data._id,
+          email: res.data.email,
+          name: res.data.name,
+          token: res.token,
+        });
+        handleSigninSubmitPopup();
+        return res;
+      }
+    });
+  }
+
+  function onLogout() {
+    localStorage.removeItem("user");
+    setCurrentUser(null);
+    navigate("/");
   }
 
   return (
-    <LoggedInContextProvider value={useLoggedIn}>
+    <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         <SignIn
           isPopupOpen={isSignInOpen}
           onClose={handleClosePopup}
-          handlePopupSubmit={handleSigninSubmitPopup}
+          handlePopupSubmit={onLogin}
           onRedirect={handleSignUpButtonClick}
         />
         <SignUp
           isPopupOpen={isSignUpOpen}
           handleSignInButtonClick={handleSignInButtonClick}
           onClose={handleClosePopup}
-          handlePopupSubmit={handleSignupSubmitPopup}
+          handlePopupSubmit={onRegister}
           onRedirect={handleSignInButtonClick}
         />
         <InfoTooltip
@@ -86,6 +160,13 @@ function App() {
           <Header
             handleSignInButtonClick={handleSignInButtonClick}
             handleSearchClick={handleSearchClick}
+            handleArticlesSearch={setOnlineArticles}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            handleLogOutClick={onLogout}
+            isLoggedIn={isLoggedIn}
+            currentUser={currentUser}
+            savedArticles={savedArticles}
           />
         </div>
 
@@ -97,23 +178,50 @@ function App() {
                 isPreLoaderOpen={isPreLoaderOpen}
                 isNothingFoundOpen={isNothingFoundOpen}
                 handleSearchClick={handleSearchClick}
+                onlineArticles={onlineArticles}
+                setOnlineArticles={setOnlineArticles}
+                searchValue={searchValue}
+                setIsSignInOpen={setIsSignInOpen}
               />
             }
           />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route
+            path="/signin"
+            element={
+              <SignInPage
+                isSignInOpen={isSignInOpen}
+                setisSignInOpen={setIsSignInOpen}
+                isLoggedIn={isLoggedIn}
+              />
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <SignUpPage
+                isSignUpOpen={isSignUpOpen}
+                setisSignUpOpen={setIsSignUpOpen}
+                isLoggedIn={isLoggedIn}
+              />
+            }
+          />
           <Route
             path="/saved-news"
             element={
-              <ProtectedRoute loggedIn={useLoggedIn}>
-                <SavedArticles />
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <SavedArticles
+                  savedArticles={savedArticles}
+                  setSavedArticles={setSavedArticles}
+                  onlineArticles={onlineArticles}
+                  setOnlineArticles={setOnlineArticles}
+                />
               </ProtectedRoute>
             }
           />
           <Route path="*" element={<Error />} />
         </Routes>
       </div>
-    </LoggedInContextProvider>
+    </CurrentUserContext.Provider>
   );
 }
 

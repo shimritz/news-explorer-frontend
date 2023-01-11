@@ -29,36 +29,9 @@
 }
 
 .about__image {
-  /* max-width: 464px; */
   max-width: 50%;
   align-self: center;
 }
-/* @media screen and (max-width: 800px) {
-  .about {
-    padding: 40px 40px 60px;
-  }
-
-  .about__wrapper {
-    gap: 32px;
-  }
-
-  .about__image {
-    max-width: 232px;
-    max-height: 232px;
-  }
-  .about__info-header {
-    font-size: 30px;
-    line-height: 40px;
-  }
-
-  .about__info {
-    max-width: 424px;
-    max-height: 424px;
-    width: 100%;
-    padding-top: 0;
-    gap: 16px;
-  }
-} */
 
 @media screen and (max-width: 768px) {
   .about {
@@ -91,7 +64,6 @@
     max-height: 240px;
     margin-left: 16px;
     margin-right: 16px;
-    /* white-space: nowrap; */
     margin-bottom: 128px;
   }
 }

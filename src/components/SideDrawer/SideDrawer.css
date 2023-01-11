@@ -1,5 +1,5 @@
 .side-drawer {
-  height: 45%;
+  height: auto; /*230px */
   background-color: #1a1b22;
 
   position: fixed;
@@ -62,7 +62,6 @@
 }
 
 .side-drawer__signin-btn {
-  align-self: flex-start;
   width: 288px;
   height: 56px;
   border-radius: 100px;
@@ -71,7 +70,7 @@
   border: 0.5px solid white;
   padding: 12px;
   font-size: 18px;
-  margin: 94px 16px 24px 16px;
+  /* margin: 94px 16px 24px 16px; */
 }
 
 .side-drawer__close-btn {

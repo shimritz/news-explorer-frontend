@@ -7,7 +7,17 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import SideDrawer from "../SideDrawer/SideDrawer";
 import Backdrop from "../Backdrop/Backdrop";
 
-function Header({ handleSignInButtonClick, handleSearchClick }) {
+function Header({
+  handleSignInButtonClick,
+  handleSearchClick,
+  handleArticlesSearch,
+  setSearchValue,
+  searchValue,
+  handleLogOutClick,
+  isLoggedIn,
+  currentUser,
+  savedArticles,
+}) {
   const location = useLocation();
   const [isBackgroundWhite, setIsBackgroundWhite] = useState(false);
   const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false);
@@ -41,25 +51,37 @@ function Header({ handleSignInButtonClick, handleSearchClick }) {
         isBackgroundWhite={isBackgroundWhite}
         handleSignInClick={handleSignInButtonClick}
         drawerClickHandler={drawerToggleClickHandler}
+        handleLogOutClick={handleLogOutClick}
+        isLoggedIn={isLoggedIn}
+        currentUser={currentUser}
       />
-      {/* {isSideDrawerOpen ? <SideDrawer /> && <Backdrop /> : ""} */}
       <SideDrawer
         show={isSideDrawerOpen}
         handleSignInClick={handleSignIn}
+        handleLogOutClick={handleLogOutClick}
         onClose={handleCloseSideDrawer}
+        isLoggedIn={isLoggedIn}
+        currentUser={currentUser}
       />
       {isSideDrawerOpen ? (
         <div>
-          {/* <SideDrawer show={isSideDrawerOpen} /> */}
           <Backdrop click={backdropClickHandler} />
         </div>
       ) : (
         ""
       )}
       {isBackgroundWhite ? (
-        <SavedNewsHeader />
+        <SavedNewsHeader
+          currentUser={currentUser}
+          savedArticles={savedArticles}
+        />
       ) : (
-        <SearchForm handleSearchClick={handleSearchClick} />
+        <SearchForm
+          handleSearchClick={handleSearchClick}
+          handleArticlesSearch={handleArticlesSearch}
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+        />
       )}
     </header>
   );

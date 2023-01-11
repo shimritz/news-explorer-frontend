@@ -7,13 +7,13 @@ function About() {
       <div className="about__info">
         <h2 className="about__info-header">About the author</h2>
         <p className="about__info-content">
-          This block describes the project author. Here you should indicate your
-          name, what you do, and which development technologies you know.
+          Hi, My name is Shimrit Breef Ziskand, I am developing my final project
+          for my Fullstack web development bootcamp with Practicum100 by Yandex.
         </p>
 
         <p className="about__info-content">
-          You can also talk about your experience with Practicum, what you
-          learned there, and how you can help potential customers.
+          I'm excited to show you the knowledge ive gain in this program through
+          this frontend and backend project. enjoy and Thank you!
         </p>
       </div>
     </div>
