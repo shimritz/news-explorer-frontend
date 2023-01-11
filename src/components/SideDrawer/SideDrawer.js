@@ -9,6 +9,7 @@ const SideDrawer = ({
   isBackgroundWhite,
   onClose,
   isLoggedIn,
+  currentUser,
 }) => {
   return (
     <nav className={`side-drawer ${show ? "side-drawer__open" : ""}`}>
@@ -40,7 +41,8 @@ const SideDrawer = ({
             className="signout__btn_white-mobile"
             onClick={handleLogOutClick}
           >
-            Elise <img src={exitIconWhite} alt="exit icon" />
+            {currentUser ? currentUser.name : ""}{" "}
+            <img src={exitIconWhite} alt="exit icon" />
           </div>
         ) : (
           <button

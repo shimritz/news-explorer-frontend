@@ -93,7 +93,9 @@ function NewsCard({
         <button
           type="button"
           className={articleSaveButtonClassName}
-          data-hover="Sign in to save articles"
+          data-hover={
+            !currentUser ? "Sign in to save articles" : "Save article"
+          }
           aria-label="save article"
           onClick={buttonAction}
         />

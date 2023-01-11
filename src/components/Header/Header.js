@@ -61,6 +61,7 @@ function Header({
         handleLogOutClick={handleLogOutClick}
         onClose={handleCloseSideDrawer}
         isLoggedIn={isLoggedIn}
+        currentUser={currentUser}
       />
       {isSideDrawerOpen ? (
         <div>
