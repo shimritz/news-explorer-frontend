@@ -103,6 +103,13 @@
   }
 }
 
+@media (max-width: 350px) {
+  .search-form {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+}
+
 @media (max-width: 330px) {
   .search-form {
     max-width: 285px;

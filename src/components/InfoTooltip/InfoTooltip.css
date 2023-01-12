@@ -66,6 +66,7 @@
 
 @media screen and (max-width: 440px) {
   .info__heading {
+    width: 290px;
     font-weight: 900;
     padding-left: 0;
   }
