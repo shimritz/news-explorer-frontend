@@ -69,7 +69,7 @@ class MainApi {
 }
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://news-explorer-api-opal.vercel.app/"
+    ? "https://news-explorer-api-opal.vercel.app"
     : "http://localhost:3001";
 
 const mainApi = new MainApi({
