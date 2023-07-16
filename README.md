@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# news-explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Application overview
 
-## Available Scripts
+Full stack web application with the following features
 
-In the project directory, you can run:
+Registration, Login and logout.
+third party api articles saving and deleting, .
 
-### `npm start`
+## Back-End overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Used technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Node & Express.
+MongoDB & Mongoose.
+Directories & Files
 
-### `npm test`
+app.js main server configuration.
+controllers main in-route logic with the best practice of centralized error handling and promises based db-server communication.
+errors class objects for centralized error handling.
+middlewares server actions before/after a selected event has happened on the server.
+models mongoose schemas and validations.
+routes main routing logic with integration of celebrate & Joi libraries for data validation.
+Third party libraries: cors, limiter, helmet, jwt, celebrate, and joi.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Front-End overview
 
-### `npm run build`
+Used technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React & CSS3
+Directories & Files (Inside /src)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+components reusable components that build the app.
+utils reusable functions and classes for mainly implementing authorization, API requests and simple error handling.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Cloud overview
 
-### `npm run eject`
+Used technologies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+GCP, Ubuntu 22.04 LTS, Nginx, Certbot for HTTPS redirection, and PM2.
+CI/CD
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Back-end: While we are in the remote server, pulling the repository from the main branch and restarting the PM2 engine.
+Front-End: Building the app locally using npm run build and then copy the files to our remote server via SSH connection.
+Implementations
+ES6 JavaScript syntax.
+REST api implementation.
+Asynchronous programming.
+OOP & Component-Oriented-Programming.
+Centralized error handling for the back end.
+BEM methodology in the css classification for each component.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Links
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Show me the app on => https://news-explorer-sz.students.nomoredomainssbs.ru
+API => api.news-explorer-sz.students.nomoredomainssbs.ru

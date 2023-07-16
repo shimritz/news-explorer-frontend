@@ -1,29 +1,32 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
-import { useLoggedIn } from "../../context/LoggedInContext";
+import { useFormWithValidation } from "../../utils/useForm";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
-  const { setIsLoggedIn } = useLoggedIn();
   const navigate = useNavigate();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const validate = () => {
-    return email.length > 0 && password.length > 0;
-  };
+  const {
+    values,
+    handleChange,
+    errors,
+    isValid,
+    resetForm,
+    serverError,
+    setServerError,
+  } = useFormWithValidation();
 
   function handleSubmit(e) {
-    // api authentication call here
-
-    handlePopupSubmit(e);
-    setIsLoggedIn(true);
-    navigate("/saved-news");
+    e.preventDefault();
+    handlePopupSubmit({ email: values.email, password: values.password })
+      .then(() => {
+        resetForm();
+        navigate("/");
+      })
+      .catch((err) => {
+        if (err.message) setServerError(err.message);
+      });
   }
 
   return (
-    // <div className="sign-up">
     <PopupWithForm
       title="sign in"
       name="sign-in"
@@ -33,7 +36,7 @@ function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       onRedirect={onRedirect}
-      validate={validate}
+      isValid={isValid}
     >
       <fieldset className="form__fieldset">
         <h3 className="form__input-title">Email</h3>
@@ -42,26 +45,30 @@ function SignIn({ isPopupOpen, onClose, onRedirect, handlePopupSubmit }) {
           name="email"
           className="form__input"
           placeholder="Enter Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={values.email || ""}
+          onChange={handleChange}
           required
         />
-        <span className="form__input-error"></span>
+        <span className="form__input-error email-input-error">
+          {errors.email}
+        </span>
         <h3 className="form__input-title">Password</h3>
         <input
           type="password"
           name="password"
           className="form__input"
           placeholder="Enter Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={values.password || ""}
+          onChange={handleChange}
           required
         />
-        <span className="form__input-error"></span>
+        <span className="form__input-error password-input-error">
+          {errors.password}
+        </span>
 
-        {/* <span className="form__input-error form__input-error_type-general">
-            "loggedError"
-          </span> */}
+        <span className="form__input-error form__input-error_type-general">
+          {serverError}
+        </span>
       </fieldset>
     </PopupWithForm>
   );

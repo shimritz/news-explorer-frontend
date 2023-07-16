@@ -1,69 +1,120 @@
-// const { date, title, text, source, image } = require("../../utils/articles");
-
-import { useState } from "react";
+import { useState, useContext, useEffect, memo } from "react";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
+import { useLocation } from "react-router-dom";
 
 function NewsCard({
+  id,
   img,
   title,
   date,
   text,
   source,
+  link,
   isSavedArticlesPage,
-  keywordLable,
+  keyword,
+  handleButtonClick,
+  isSaved = false,
+  setIsSignInOpen,
 }) {
-  let [isClicked, setIsClicked] = useState(false);
-  function handleSaveClick() {
-    // setIsClicked(true);
-    setIsClicked(!isClicked);
+  const currentUser = useContext(CurrentUserContext);
+  let [isClicked, setIsClicked] = useState(isSaved);
+  let [articleSaveButtonClassName, setArticleSaveButtonClassName] =
+    useState("article__save-btn");
+  const location = useLocation();
+
+  useEffect(() => {
+    isClicked
+      ? setArticleSaveButtonClassName("article__save-btn_type_selected")
+      : setArticleSaveButtonClassName("article__save-btn");
+  }, [isClicked]);
+
+  async function handleDeleteClick() {
+    try {
+      await handleButtonClick(id);
+      setIsClicked(false);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  const formatDate = (date) => {
+    const newDate = new Date(date);
+    const options = {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    };
+    return newDate.toLocaleDateString("en-US", options);
+  };
+
+  async function handleSaveClick() {
+    if (!currentUser) {
+      setIsSignInOpen(true);
+      return;
+    }
+
+    try {
+      await handleButtonClick(
+        id,
+        {
+          keyword,
+          title,
+          text,
+          date,
+          source,
+          link,
+          image: img,
+          owner: currentUser._id,
+        },
+        isClicked
+      );
+
+      const revertClicked = !isClicked;
+      setIsClicked(revertClicked);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  function handleDeleteClick() {
-    setIsClicked = true;
-  }
-
-  const articleSaveButtonClassName = ` ${
-    isClicked ? "article__save-btn_type_selected" : "article__save-btn"
-  }`;
+  const buttonAction =
+    location.pathname === "/saved-news" ? handleDeleteClick : handleSaveClick;
 
   return (
-    <div id="article-template">
-      <article className="article">
-        <img className="article__image" src={img} alt="article image" />
-        {/* if isSavedArticlesPage true then add button x otherwise add button y */}
-        {isSavedArticlesPage ? (
-          <button
-            type="button"
-            className="article__delete-btn"
-            second_data-hover="Remove from saved"
-            // className="article__save-btn article__save-btn_type_selected"
-            aria-label="Delete article"
-            onClick={handleDeleteClick}
-          />
-        ) : (
-          <button
-            type="button"
-            className={articleSaveButtonClassName}
-            // className="article__save-btn_type_selected"
-            data-hover="Sign in to save articles"
-            // className="article__save-btn article__save-btn_type_selected"
-            aria-label="save article"
-            onClick={handleSaveClick}
-          />
-        )}
-        {isSavedArticlesPage ? (
-          <p className="article__key-word-label">{keywordLable}</p>
-        ) : null}
-        <div className="article__info">
-          <p className="article__info_date">{date}</p>
+    <article className="article">
+      <img className="article__image" src={img} alt="article" />
+      {isSavedArticlesPage ? (
+        <button
+          type="button"
+          className="article__delete-btn"
+          second_data-hover="Remove from saved"
+          aria-label="Delete article"
+          onClick={buttonAction}
+        />
+      ) : (
+        <button
+          type="button"
+          className={articleSaveButtonClassName}
+          data-hover={
+            !currentUser ? "Sign in to save articles" : "Save article"
+          }
+          aria-label="save article"
+          onClick={buttonAction}
+        />
+      )}
+      {isSavedArticlesPage ? (
+        <p className="article__key-word-label">{keyword}</p>
+      ) : null}
+      <div className="article__info">
+        <p className="article__info_date">{formatDate(date)}</p>
+        <a href={link}>
           <h2 className="article__info_title">{title}</h2>
-          <p className="article__info_text">{text}</p>
-          <div className="article__footer">
-            <h2 className="article__footer_source-name">{source}</h2>
-          </div>
+        </a>
+        <p className="article__info_text">{text}</p>
+        <div className="article__footer">
+          <h2 className="article__footer_source-name">{source}</h2>
         </div>
-      </article>
-    </div>
+      </div>
+    </article>
   );
 }
 
-export default NewsCard;
+export default memo(NewsCard);

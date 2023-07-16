@@ -14,59 +14,6 @@
   padding-bottom: 64px;
 }
 
-.info__container {
-  width: 430px;
-  height: 182px;
-  margin: 0;
-  padding: 0;
-  background: #ffffff;
-  color: #000000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-radius: 10px;
-  align-self: center;
-  position: relative;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  padding-bottom: 10px;
-}
-
-.popup {
-  width: 430px;
-
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
-}
-
-.popup__container {
-  border-radius: 16px;
-  display: flex;
-  padding: 0px;
-  background-color: white;
-  color: #fff;
-  gap: 10px;
-  position: relative;
-}
-
-.popup_open {
-  display: flex;
-  visibility: visible;
-  opacity: 1;
-  transition-delay: 0s;
-}
-
 .form__title {
   font-family: "Roboto", Arial, sans-serif;
   text-align: center;
@@ -120,33 +67,12 @@
   color: #2f71e5;
 }
 
-.popup__close-btn {
-  position: absolute;
-  top: -100px;
-  right: -40px;
-  background-color: transparent;
-  background-image: url("../../assets/icons/CloseIcon\(1\).svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 36px;
-  width: 36px;
-  border: none;
-}
-
 @media screen and (max-width: 800px) {
   .popup__close-button {
     background-size: 20px 20px;
   }
 }
 @media screen and (max-width: 440px) {
-  .popup {
-    left: 0;
-    top: -120px;
-    background-image: url("../../assets/images/bg_search_img.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
   .form {
     width: 305px;
     height: 560px;
@@ -154,35 +80,9 @@
     padding: 0;
   }
 
-  .info__container {
-    width: 305px;
-  }
-
   .form__title {
     font-weight: 900;
     width: 158px;
     padding: 0;
-  }
-
-  .popup__container {
-    display: flex;
-    flex-direction: column;
-    padding: 0px;
-    background-color: transparent;
-    color: #fff;
-    gap: 10px;
-    width: 100%;
-    height: 560px;
-    margin-top: 52px;
-    border-radius: 10px;
-  }
-
-  .popup__close-btn {
-    background-color: transparent;
-    background-image: url("../../assets/icons/mobileclose.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    top: -45px;
-    right: 12px;
   }
 }
